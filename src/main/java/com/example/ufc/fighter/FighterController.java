@@ -53,19 +53,4 @@ public class FighterController {
             @RequestBody FighterDto dto){
         fighterService.updateFighter(fighterId, dto);
     }
-//        Fight fight1 = new Fight(
-//                1L,
-//                maxHalloway,
-//                alexanderVolkanovski,
-//                CHAMPIONSHIP,
-//                LocalDate.of(2020, Month.JULY, 22),
-//                "Nevada, Las Vegas",
-//                DECISION,
-//                String.format("%s won by %s.", alexanderVolkanovski.getName(), DECISION)
-//        );
-//
-//        return List.of(
-//                fight1
-//        );
-//    }
 }
