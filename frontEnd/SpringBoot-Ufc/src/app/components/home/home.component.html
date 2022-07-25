@@ -6,28 +6,33 @@
 
   <div class="fight">
     <div class="left">
-      <h2>{{fightData?.fighter1?.name}}</h2>
-      <h3>Stats</h3>
-      <table>
-        <tr>
-          <td>Height</td>
-          <td>{{fightData?.fighter1?.height}}</td>
-        </tr>
-        <tr>
-          <td>Weight</td>
-          <td>{{fightData?.fighter1?.weight}} Lbs.</td>
-        </tr>
-        <tr>
-          <td>Age</td>
-          <td>{{fightData?.fighter1?.age}}</td>
-        </tr>
-        <tr>
-          <td>Birthdate</td>
-          <td>{{fightData?.fighter1?.dob | date}}</td>
-        </tr>
-      </table>
+      <div class="image">
+        <img src="/assets/images/fighter2.png" alt="{{fightData?.fighter1?.name}}">
+      </div>
+      <div class="fighter-data">
+        <h2>{{fightData?.fighter1?.name}}</h2>
+        <div class="stats">
+          <h3>Stats</h3>
+          <div class="row">
+            <p>Height</p>
+            <span>{{fightData?.fighter1?.height}}</span>
+          </div>
+          <div class="row">
+            <p>Weight</p>
+            <span>{{fightData?.fighter1?.weight}} Lbs.</span>
+          </div>
+          <div class="row">
+            <p>Age</p>
+            <span>{{fightData?.fighter1?.age}}</span>
+          </div>
+          <div class="row">
+            <p>Birthdate</p>
+            <span>{{fightData?.fighter1?.dob | date}}</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="center">
+    <div class="center" [ngClass]="[fightData?.fightType == 'CHAMPIONSHIP' ? 'championship' : 'fightNight']">
       <h2>VS</h2>
       <div class="fight-info">
         <p>{{fightData?.date | date}}</p>
@@ -38,26 +43,31 @@
       </div>
     </div>
     <div class="right">
-      <h2>{{fightData?.fighter2?.name}}</h2>
-      <h3>Stats</h3>
-      <table>
-        <tr>
-          <td>Height</td>
-          <td>{{fightData?.fighter2?.height}}</td>
-        </tr>
-        <tr>
-          <td>Weight</td>
-          <td>{{fightData?.fighter2?.weight}} Lbs.</td>
-        </tr>
-        <tr>
-          <td>Age</td>
-          <td>{{fightData?.fighter2?.age}}</td>
-        </tr>
-        <tr>
-          <td>Birthdate</td>
-          <td>{{fightData?.fighter2?.dob | date}}</td>
-        </tr>
-      </table>
+      <div class="image">
+        <img src="/assets/images/fighter1.png" alt="{{fightData?.fighter2?.name}}">
+      </div>
+      <div class="fighter-data">
+        <h2>{{fightData?.fighter2?.name}}</h2>
+        <div class="stats">
+          <h3>Stats</h3>
+          <div class="row">
+            <p>Height</p>
+            <span>{{fightData?.fighter2?.height}}</span>
+          </div>
+          <div class="row">
+            <p>Weight</p>
+            <span>{{fightData?.fighter2?.weight}} Lbs.</span>
+          </div>
+          <div class="row">
+            <p>Age</p>
+            <span>{{fightData?.fighter2?.age}}</span>
+          </div>
+          <div class="row">
+            <p>Birthdate</p>
+            <span>{{fightData?.fighter2?.dob | date}}</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
