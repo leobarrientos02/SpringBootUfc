@@ -1,0 +1,87 @@
+<div class="refereeMenu">
+  <h1>Referees Page</h1>
+  <button class="menu-button">Add Referee</button>
+</div>
+
+<div *ngIf="referees.length == 0" class="referee">
+  <h1>{{referee?.name}}</h1>
+  <p>Date of Birth: {{referee?.dob | date}}</p>
+  <p>Age: {{referee?.age}} years old</p>
+  <div class="menu">
+    <button class="ref-button">Edit</button>
+    <button class="ref-button" style="margin-left: 1rem">Delete</button>
+  </div>
+</div>
+
+<div *ngIf="referees.length != 0" class="referees">
+  <div *ngFor="let referee of referees" class="referee">
+    <h1>{{referee?.name}}</h1>
+    <p>Date of Birth: {{referee?.dob | date}}</p>
+    <p>Age: {{referee?.age}} years old</p>
+    <div class="menu">
+      <button class="ref-button">Edit</button>
+      <button class="ref-button" style="margin-left: 1rem">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="addReferee">
+  <h2>Add Referee</h2>
+  <form>
+    <label for="name">Full Name</label>
+    <input type="text" name="name" id="name" required />
+    <label for="dov">Date of Birth</label>
+    <input type="date" name="dob" id="dob" required />
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age" required />
+    <input type="submit" value="Add Referee" />
+  </form>
+</div>
+
+<div class="updateReferee">
+  <h2>Delete Referee</h2>
+  <form>
+    <div class="row">
+      <p>Are you sure you want to delete?</p>
+    </div>
+    <input type="submit" value="Delete Referee" />
+  </form>
+</div>
+
+<div class="addReferee">
+  <h2>Add Referee</h2>
+  <form>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input type="text" name="name" id="name" required />
+    </div>
+    <div class="row">
+      <label for="dov">Date of Birth</label>
+      <input type="date" name="dob" id="dob" required />
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input type="number" name="age" id="age" required />
+    </div>
+    <input type="submit" value="Add Referee" />
+  </form>
+</div>
+
+<div class="updateReferee">
+  <h2>Update Referee</h2>
+  <form>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input type="text" name="name" id="name" required />
+    </div>
+    <div class="row">
+      <label for="dov">Date of Birth</label>
+      <input type="date" name="dob" id="dob" required />
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input type="number" name="age" id="age" required />
+    </div>
+    <input type="submit" value="Update Referee" />
+  </form>
+</div>
