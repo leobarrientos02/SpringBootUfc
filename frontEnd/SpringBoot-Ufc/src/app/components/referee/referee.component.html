@@ -1,6 +1,6 @@
 <div class="refereeMenu">
   <h1>Referees Page</h1>
-  <button class="menu-button">Add Referee</button>
+  <button class="menu-button" (click)="openForm('add')">Add Referee</button>
 </div>
 
 <div *ngIf="referees.length == 0" class="referee">
@@ -8,8 +8,8 @@
   <p>Date of Birth: {{referee?.dob | date}}</p>
   <p>Age: {{referee?.age}} years old</p>
   <div class="menu">
-    <button class="ref-button">Edit</button>
-    <button class="ref-button" style="margin-left: 1rem">Delete</button>
+    <button class="ref-button" (click)="openForm('update')">Edit</button>
+    <button class="ref-button" style="margin-left: 1rem" (click)="openForm('delete')">Delete</button>
   </div>
 </div>
 
@@ -19,25 +19,31 @@
     <p>Date of Birth: {{referee?.dob | date}}</p>
     <p>Age: {{referee?.age}} years old</p>
     <div class="menu">
-      <button class="ref-button">Edit</button>
-      <button class="ref-button" style="margin-left: 1rem">Delete</button>
+      <button class="ref-button" (click)="openForm('update')">Edit</button>
+      <button class="ref-button" style="margin-left: 1rem" (click)="openForm('delete')">Delete</button>
     </div>
   </div>
 </div>
 
-<div class="shadow"></div>
+<div class="shadow" id="shadow"></div>
 
-<div class="updateReferee">
+<div class="deleteReferee" id="deleteReferee">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('delete')">Close</button>
+  </div>
   <h2>Delete Referee</h2>
   <form>
     <div class="row">
       <p>Are you sure you want to delete?</p>
     </div>
-    <input type="submit" value="Delete Referee" />
+    <input type="submit" value="Delete Referee" class="submit-button" />
   </form>
 </div>
 
-<div class="addReferee">
+<div class="addReferee" id="addReferee">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('add')">Close</button>
+  </div>
   <h2>Add Referee</h2>
   <form>
     <div class="row">
@@ -52,11 +58,14 @@
       <label for="age">Age</label>
       <input type="number" name="age" id="age" required />
     </div>
-    <input type="submit" value="Add Referee" />
+    <input type="submit" value="Add Referee" class="submit-button" />
   </form>
 </div>
 
-<div class="updateReferee">
+<div class="updateReferee" id="updateReferee">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('update')">Close</button>
+  </div>
   <h2>Update Referee</h2>
   <form>
     <div class="row">
@@ -71,6 +80,6 @@
       <label for="age">Age</label>
       <input type="number" name="age" id="age" required />
     </div>
-    <input type="submit" value="Update Referee" />
+    <input type="submit" value="Update Referee" class="submit-button" />
   </form>
 </div>

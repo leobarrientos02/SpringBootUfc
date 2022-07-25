@@ -41,4 +41,19 @@ export class RefereeComponent implements OnInit {
     )
   }
 
+  // DOM Functions
+  public openForm(formType: any){
+    const shadow = document.getElementById('shadow');
+    shadow?.classList.add('showShadow');
+    const form = document.getElementById(`${formType}Referee`);
+    form?.classList.add('showForm');
+  }
+
+  public closeForm(formType: any){
+    const shadow = document.getElementById('shadow');
+    shadow?.classList.remove('showShadow');
+    const form = document.getElementById(`${formType}Referee`);
+    form?.classList.remove('showForm');
+  }
+
 }
