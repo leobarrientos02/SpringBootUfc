@@ -24,7 +24,7 @@ export class RefereeComponent implements OnInit {
         this.referees = response;
       },
       (error: HttpErrorResponse) => {
-        console.log(error.message);
+        console.log("Status Code: " + error.status + ", message: " + error.message);
       }
     );
   }
@@ -36,7 +36,7 @@ export class RefereeComponent implements OnInit {
         this.referee = response;
       },
       (error: HttpErrorResponse) => {
-        console.log(error.message);
+        console.log("Status Code: " + error.status + ", message: " + error.message);
       }
     )
   }
@@ -55,5 +55,4 @@ export class RefereeComponent implements OnInit {
     const form = document.getElementById(`${formType}Referee`);
     form?.classList.remove('showForm');
   }
-
 }

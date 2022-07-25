@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -218,6 +217,10 @@ public class FightService {
         }else{
             fight.setFightType(this.getFightType(dto.getFightType()));
         }
+    }
+
+    public Optional<Fight> getFightById(Long fightId) {
+        return fightRepository.findById(fightId);
     }
 
     public Fighter finalPrediction(Fighter fighter1, Fighter fighter2){

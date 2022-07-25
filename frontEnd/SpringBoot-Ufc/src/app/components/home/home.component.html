@@ -1,0 +1,63 @@
+<div class="home">
+  <div class="home-title">
+    <h1>Welcome to SpringBoot Ufc</h1>
+    <p>Are you ready for the main event this weekend?</p>
+  </div>
+
+  <div class="fight">
+    <div class="left">
+      <h2>{{fightData?.fighter1?.name}}</h2>
+      <h3>Stats</h3>
+      <table>
+        <tr>
+          <td>Height</td>
+          <td>{{fightData?.fighter1?.height}}</td>
+        </tr>
+        <tr>
+          <td>Weight</td>
+          <td>{{fightData?.fighter1?.weight}} Lbs.</td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td>{{fightData?.fighter1?.age}}</td>
+        </tr>
+        <tr>
+          <td>Birthdate</td>
+          <td>{{fightData?.fighter1?.dob | date}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="center">
+      <h2>VS</h2>
+      <div class="fight-info">
+        <p>{{fightData?.date | date}}</p>
+        <p>{{fightData?.fighter1?.weightclass}}</p>
+        <p>{{fightData?.fightType}}</p>
+        <p>{{fightData?.location}}</p>
+        <p>Referee: {{fightData?.referee?.name}}</p>
+      </div>
+    </div>
+    <div class="right">
+      <h2>{{fightData?.fighter2?.name}}</h2>
+      <h3>Stats</h3>
+      <table>
+        <tr>
+          <td>Height</td>
+          <td>{{fightData?.fighter2?.height}}</td>
+        </tr>
+        <tr>
+          <td>Weight</td>
+          <td>{{fightData?.fighter2?.weight}} Lbs.</td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td>{{fightData?.fighter2?.age}}</td>
+        </tr>
+        <tr>
+          <td>Birthdate</td>
+          <td>{{fightData?.fighter2?.dob | date}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
