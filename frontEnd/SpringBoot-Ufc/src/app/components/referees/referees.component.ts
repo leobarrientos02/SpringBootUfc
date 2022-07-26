@@ -76,13 +76,6 @@ export class RefereesComponent implements OnInit {
     shadow?.classList.add('showShadow');
     const form = document.getElementById(`${formType}Referee`);
     form?.classList.add('showForm');
-
-    if(formType == "update"){
-      this.editReferee = referee;
-    }else if(formType == "delete"){
-      this.deleteReferee = referee;
-    }
-
   }
 
   public closeForm(formType: any){

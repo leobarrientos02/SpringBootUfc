@@ -39,7 +39,13 @@
   <form #addFighter="ngForm" (ngSubmit)="onAddFighter(addFighter)" ngNativeValidate>
     <div class="row">
       <label for="name">Full Name</label>
-      <input ngModel type="text" name="name" id="name" required placeholder="Enter your full name" />
+      <input
+        ngModel
+        type="text"
+        pattern="/^[a-z ,.'-]+$/i"
+        name="name"
+        id="name" required
+        placeholder="Enter your full name" />
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="weight">Weight</label>
@@ -55,7 +61,14 @@
     </div>
     <div class="row">
       <label for="age">Age</label>
-      <input ngModel type="number" name="age" id="age" required placeholder="Enter your age" />
+      <input
+        ngModel
+        pattern="^[0-9]*$"
+        type="number"
+        name="age"
+        id="age"
+        required
+        placeholder="Enter your age" />
     </div>
     <input type="submit" value="Add Fighter" class="submit-button" />
   </form>

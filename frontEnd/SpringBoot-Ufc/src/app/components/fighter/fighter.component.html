@@ -62,7 +62,13 @@
   <form #updateFighterForm="ngForm" (ngSubmit)="onUpdateFighter(updateFighterForm, fighter?.id)" ngNativeValidate>
     <div class="row">
       <label for="name">Full Name</label>
-      <input ngModel="{{fighter?.name}}" type="text" name="name" id="name" required placeholder="Enter your full name" />
+      <input
+        ngModel="{{fighter?.name}}"
+        type="text"
+        pattern="/^[a-z ,.'-]+$/i"
+        name="name"
+        id="name" required
+        placeholder="Enter your full name" />
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="weight">Weight</label>
@@ -78,7 +84,13 @@
     </div>
     <div class="row">
       <label for="age">Age</label>
-      <input ngModel="{{fighter?.age}}" type="number" name="age" id="age" required placeholder="Enter your age" />
+      <input
+        ngModel="{{fighter?.age}}"
+        type="number"
+        pattern="^[0-9]*$"
+        name="age"
+        id="age" required
+        placeholder="Enter your age" />
     </div>
     <input type="submit" value="Update Fighter" class="submit-button" />
   </form>

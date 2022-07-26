@@ -1,20 +1,21 @@
 <div class="referee-page">
-
   <div class="referee-title">
     <h2>{{referee?.name}}</h2>
     <div class="menu">
-      <button>Edit</button>
-      <button>Delete</button>
+      <button (click)="openForm('update')" class="menu-button">Edit</button>
+      <button (click)="openForm('delete')" class="menu-button" style="margin-left: 1rem;">Delete</button>
     </div>
   </div>
 
   <div class="info">
-    <div class="image"></div>
+    <div class="image">
+      <img src="/assets/images/herbDean.jpg" alt="{{referee?.name}}">
+    </div>
     <div class="biography">
       <h3>Biography</h3>
       <div class="data">
         <p>Birth date</p>
-        <span>{{referee?.birthDate | date}}</span>
+        <span>{{referee?.dob | date}}</span>
       </div>
       <div class="data">
         <p>Age</p>
@@ -22,4 +23,49 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="shadow" id="shadow"></div>
+
+<div class="deleteReferee" id="deleteReferee">
+  <div class="exit">
+    <button  (click)="closeForm('delete')" class="ref-button">Close</button>
+  </div>
+  <h2>Delete Referee</h2>
+  <form (ngSubmit)="onDeleteReferee(referee?.id)">
+    <div class="row">
+      <p style="width: 100%;text-align:center;">Are you sure you want to delete {{referee?.name}}?</p>
+    </div>
+    <input type="submit" value="Delete Referee" class="submit-button" />
+  </form>
+</div>
+
+
+<div class="updateReferee" id="updateReferee">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('update')">Close</button>
+  </div>
+  <h2>Update Referee</h2>
+  <form #updateRefereeForm="ngForm" (ngSubmit)="onUpdateReferee(updateRefereeForm, referee?.id)" ngNativeValidate>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input ngModel="{{referee?.name}}" type="text" name="name" id="name" required placeholder="Enter your full name" />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="dob">Date of Birth</label>
+      <input ngModel="{{referee?.dob}}" type="date" name="dob" id="dob" required placeholder="Enter birthdate"/>
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input
+        ngModel="{{referee?.age}}"
+        type="number"
+        name="age"
+        id="age"
+        required
+        pattern="^[0-9]*$"
+        placeholder="Enter your age" />
+    </div>
+    <input type="submit" value="Update Referee" class="submit-button" />
+  </form>
 </div>
