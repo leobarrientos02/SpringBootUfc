@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FighterService } from 'src/app/services/Fighter/fighter.service';
 
@@ -35,20 +36,37 @@ export class FighterComponent implements OnInit {
     )
   }
 
-  public updateFighter: any;
-  public deleteFighter: any;
+  // Update Fighter
+  public onUpdateFighter(fighterForm: NgForm, fighterId: any){
+    this.fighterService.updateFighter(fighterForm.value, fighterId).subscribe(
+      (response: any) => {
+        this.getFighter();
+        this.closeForm('update');
+      },
+      (error: HttpErrorResponse) => {
+        console.log("Status Code: " + error.status + ", message: " + error.message);
+      }
+    )
+  }
 
-  public openForm(formType: any, fighter: any){
+  // Delete Fighter
+  public onDeleteFighter(fighterId: any){
+    this.fighterService.deleteFighter(fighterId).subscribe(
+      (response: any) => {
+        this.router.navigateByUrl('/home');
+        this.closeForm('delete');
+      },
+      (error: HttpErrorResponse) => {
+        console.log("Status Code: " + error.status + ", message: " + error.message);
+      }
+    )
+  }
+
+  public openForm(formType: any){
     const shadow = document.getElementById('shadow');
     shadow?.classList.add('showShadow');
     const form = document.getElementById(`${formType}Fighter`);
     form?.classList.add('showForm');
-
-    if(formType == "update"){
-      this.updateFighter = fighter;
-    }else{
-      this.deleteFighter = fighter;
-    }
   }
 
   public closeForm(formType: any){

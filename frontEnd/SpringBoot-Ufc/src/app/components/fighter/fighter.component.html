@@ -2,8 +2,8 @@
   <div class="fighter-title">
     <h2>{{fighter?.name}}</h2>
     <div class="menu">
-      <button (click)="openForm('update', fighter)" class="menu-button">Edit</button>
-      <button (click)="openForm('delete', fighter)" class="menu-button" style="margin-left: 1rem;">Delete</button>
+      <button (click)="openForm('update')" class="menu-button">Edit</button>
+      <button (click)="openForm('delete')" class="menu-button" style="margin-left: 1rem;">Delete</button>
     </div>
   </div>
 
@@ -45,38 +45,40 @@
     <button  (click)="closeForm('delete')" class="ref-button">Close</button>
   </div>
   <h2>Delete Fighter</h2>
-  <form>
+  <form #fighterForm="ngForm" (ngSubmit)="onDeleteFighter(fighter?.id)">
     <div class="row">
-      <p style="width: 100%;text-align:center;">Are you sure you want to delete {{deleteFighter?.name}}?</p>
+      <p style="width: 100%;text-align:center;">Are you sure you want to delete {{fighter?.name}}?</p>
     </div>
     <input type="submit" value="Delete Fighter" class="submit-button" />
   </form>
 </div>
+
+
 <div class="updateFighter" id="updateFighter">
   <div class="exit">
     <button class="ref-button" (click)="closeForm('update')">Close</button>
   </div>
   <h2>Update Fighter</h2>
-  <form ngNativeValidate>
+  <form #fighterForm="ngForm" (ngSubmit)="onUpdateFighter(fighterForm, fighter?.id)" ngNativeValidate>
     <div class="row">
       <label for="name">Full Name</label>
-      <input ngModel="{{updateFighter?.name}}" type="text" name="name" id="name" required placeholder="Enter your full name" />
+      <input ngModel="{{fighter?.name}}" type="text" name="name" id="name" required placeholder="Enter your full name" />
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="weight">Weight</label>
-      <input ngModel="{{updateFighter?.weight}}" type="number" name="weight" id="weight" required placeholder="Enter your body weight" />
+      <input ngModel="{{fighter?.weight}}" type="number" name="weight" id="weight" required placeholder="Enter your body weight" />
     </div>
     <div class="row">
       <label for="height">Height</label>
-      <input ngModel="{{updateFighter?.height}}" type="text" name="height" id="height" required placeholder="6'5 inches" />
+      <input ngModel="{{fighter?.height}}" type="text" name="height" id="height" required placeholder="6'5 inches" />
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="dob">Date of Birth</label>
-      <input ngModel="{{updateFighter?.dob}}" type="date" name="dob" id="dob" required placeholder="Enter birthdate"/>
+      <input ngModel="{{fighter?.dob}}" type="date" name="dob" id="dob" required placeholder="Enter birthdate"/>
     </div>
     <div class="row">
       <label for="age">Age</label>
-      <input ngModel="{{updateFighter?.age}}" type="number" name="age" id="age" required placeholder="Enter your age" />
+      <input ngModel="{{fighter?.age}}" type="number" name="age" id="age" required placeholder="Enter your age" />
     </div>
     <input type="submit" value="Update Fighter" class="submit-button" />
   </form>

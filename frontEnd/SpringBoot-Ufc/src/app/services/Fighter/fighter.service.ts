@@ -26,4 +26,14 @@ export class FighterService {
     return this.http.post<any>(`${this.fightersUrl}`, fighterForm);
   }
 
+  // Update Fighter
+  public updateFighter(fighterForm: any, fighterId: any): Observable<any>{
+    return this.http.put<any>(`${this.fightersUrl}/${fighterId}`, fighterForm);
+  }
+
+  // Delete Fighter
+  public deleteFighter(fighterId: any): Observable<any>{
+    return this.http.delete<any>(`${this.fightersUrl}/${fighterId}`);
+  }
+
 }
