@@ -7,7 +7,7 @@ import { FightService } from "../../services/Fight/fight.service";
   templateUrl: './fight.component.html',
   styleUrls: ['./fight.component.scss']
 })
-export class FightComponent implements OnInit {
+export class FightsComponent implements OnInit {
 
   constructor(private fightService: FightService) { }
 

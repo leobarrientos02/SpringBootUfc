@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RefereeComponent} from "./components/referee/referee.component";
-import { FightComponent } from "./components/fight/fight.component";
-import { FighterComponent } from "./components/fighter/fighter.component";
+import { RefereesComponent} from "./components/referee/referee.component";
+import { FightsComponent } from "./components/fight/fight.component";
+import { FightersComponent } from "./components/fighter/fighter.component";
 import { HomeComponent } from "./components/home/home.component";
 
 const routes: Routes = [
-  {path: "referee", component: RefereeComponent},
-  {path: "fight", component: FightComponent},
-  {path: "fighter", component: FighterComponent},
+  {path: "referee", component: RefereesComponent},
+  {path: "fight", component: FightsComponent},
+  {path: "fighter", component: FightersComponent},
   {path: "home", component: HomeComponent},
 ];
 

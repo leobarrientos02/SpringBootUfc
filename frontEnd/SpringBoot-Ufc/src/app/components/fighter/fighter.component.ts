@@ -8,7 +8,7 @@ import { FighterService } from "../../services/Fighter/fighter.service";
   templateUrl: './fighter.component.html',
   styleUrls: ['./fighter.component.scss']
 })
-export class FighterComponent implements OnInit {
+export class FightersComponent implements OnInit {
 
   public fighters: any = [];
   public fighter: any;

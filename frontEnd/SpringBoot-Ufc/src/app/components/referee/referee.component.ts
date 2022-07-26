@@ -8,7 +8,7 @@ import { RefereeService } from "../../services/Referee/referee.service";
   templateUrl: './referee.component.html',
   styleUrls: ['./referee.component.scss']
 })
-export class RefereeComponent implements OnInit {
+export class RefereesComponent implements OnInit {
 
   constructor(public refereeService: RefereeService) { }
 
