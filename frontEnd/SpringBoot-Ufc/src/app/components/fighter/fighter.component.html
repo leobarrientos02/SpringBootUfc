@@ -4,16 +4,28 @@
     <button class="menu-button" (click)="openForm('add')">Add Fighter</button>
   </div>
 
-  <div *ngIf="fighters.length != 0" class="fighters">
-    <div *ngFor="let fighter of fighters" class="fighter">
-      <h1>{{fighter?.name}}</h1>
-      <p>Date of Birth: {{fighter?.dob | date}}</p>
-      <p>Age: {{fighter?.age}} years old</p>
-      <div class="menu">
-        <button class="ref-button" (click)="openForm('update')">Edit</button>
-        <button class="ref-button" style="margin-left: 1rem" (click)="openForm('delete')">Delete</button>
-      </div>
-    </div>
+  <table id="fighters">
+    <tr>
+      <th>Fighter#</th>
+      <th>Full Name</th>
+      <th>Weight</th>
+      <th>Weightclass</th>
+      <th>Height</th>
+      <th>Birthdate</th>
+      <th>Age</th>
+    </tr>
+    <tr *ngFor="let fighter of fighters">
+      <td>{{fighter?.id}}</td>
+      <td>{{fighter?.name}}</td>
+      <td>{{fighter?.weight}} Lbs.</td>
+      <td>{{fighter?.weightclass}}</td>
+      <td>{{fighter?.height}}</td>
+      <td>{{fighter?.dob | date}}</td>
+      <td>{{fighter?.age}}</td>
+    </tr>
+  </table>
+  <div *ngIf="fighters.length < 1">
+    <p>No Fighters in SpringBoot Ufc.</p>
   </div>
 </div>
 

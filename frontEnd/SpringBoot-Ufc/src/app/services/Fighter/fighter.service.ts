@@ -9,8 +9,12 @@ import { HttpClient } from "@angular/common/http";
 export class FighterService {
 
   constructor(private http: HttpClient) { }
-  private fightersUrl = `${environment.apiBaseUrl}/fighter`
+  private fightersUrl = `${environment.apiBaseUrl}/fighters`;
+
+  // Get all fighters
   public getAllFighters(): Observable<any[]>{
-    return this.http.get<any[]>(`${this.}`)
+    return this.http.get<any[]>(`${this.fightersUrl}`);
   }
+
+
 }

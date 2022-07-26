@@ -1,4 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FighterService } from "../../services/Fighter/fighter.service";
+
 @Component({
   selector: 'app-fighter',
   templateUrl: './fighter.component.html',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class FighterComponent implements OnInit {
 
   public fighters: any = [];
-  constructor() { }
+  constructor(private fighterService: FighterService) { }
 
   ngOnInit(): void {
+    this.getAllFighters();
+  }
+
+  // Get all fighters
+  public getAllFighters(){
+    this.fighterService.getAllFighters().subscribe(
+      (response: any) => {
+        this.fighters = response;
+      },
+      (error: HttpErrorResponse) => {
+        console.log("Status Code: " + error.status + ", message: " + error.message);
+      }
+    )
   }
 
   // DOM Functions
