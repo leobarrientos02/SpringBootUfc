@@ -23,6 +23,9 @@ public class FighterService {
         return fighterRepository.findAll();
     }
 
+    public Optional<Fighter> getFighterById(Long fighterId){
+        return fighterRepository.findById(fighterId);
+    }
     public void addNewFighter(Fighter fighter) {
        Optional<Fighter> fighterOptional = fighterRepository
                .findFighterByName(fighter.getName());

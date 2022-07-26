@@ -69,6 +69,33 @@
   }
 }
 
+#referees {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#referees td, #referees th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#referees td{
+  text-align: center;
+}
+
+#referees tr:nth-child(even){background-color: #f2f2f2;}
+
+#referees tr:hover {background-color: #ddd;}
+
+#referees th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: red;
+  color: white;
+}
+
 .updateReferee, .deleteReferee, .addReferee {
   width: 50vw;
   border-radius: 1rem;

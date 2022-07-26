@@ -1,1 +1,77 @@
-<p>fighter works!</p>
+<div class="fighter-page">
+  <div class="fighterMenu">
+    <h1>Fighters Page</h1>
+    <button class="menu-button" (click)="openForm('add')">Add Fighter</button>
+  </div>
+
+  <div *ngIf="fighters.length != 0" class="fighters">
+    <div *ngFor="let fighter of fighters" class="fighter">
+      <h1>{{fighter?.name}}</h1>
+      <p>Date of Birth: {{fighter?.dob | date}}</p>
+      <p>Age: {{fighter?.age}} years old</p>
+      <div class="menu">
+        <button class="ref-button" (click)="openForm('update')">Edit</button>
+        <button class="ref-button" style="margin-left: 1rem" (click)="openForm('delete')">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="shadow" id="shadow"></div>
+
+<div class="deleteFighter" id="deleteFighter">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('delete')">Close</button>
+  </div>
+  <h2>Delete Fighter</h2>
+  <form>
+    <div class="row">
+      <p>Are you sure you want to delete?</p>
+    </div>
+    <input type="submit" value="Delete Fighter" class="submit-button" />
+  </form>
+</div>
+
+<div class="addFighter" id="addFighter">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('add')">Close</button>
+  </div>
+  <h2>Add Fighter</h2>
+  <form>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input type="text" name="name" id="name" required />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="dob">Date of Birth</label>
+      <input type="date" name="dob" id="dob" required />
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input type="number" name="age" id="age" required />
+    </div>
+    <input type="submit" value="Add Fighter" class="submit-button" />
+  </form>
+</div>
+
+<div class="updateFighter" id="updateFighter">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('update')">Close</button>
+  </div>
+  <h2>Update Fighter</h2>
+  <form>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input type="text" name="name" id="name" required />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="dob">Date of Birth</label>
+      <input type="date" name="dob" id="dob" required />
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input type="number" name="age" id="age" required />
+    </div>
+    <input type="submit" value="Update Fighter" class="submit-button" />
+  </form>
+</div>

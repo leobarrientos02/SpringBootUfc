@@ -4,27 +4,20 @@
     <button class="menu-button" (click)="openForm('add')">Add Referee</button>
   </div>
 
-  <div *ngIf="referees.length == 0" class="referee">
-    <h1>{{referee?.name}}</h1>
-    <p>Date of Birth: {{referee?.dob | date}}</p>
-    <p>Age: {{referee?.age}} years old</p>
-    <div class="menu">
-      <button class="ref-button" (click)="openForm('update')">Edit</button>
-      <button class="ref-button" style="margin-left: 1rem" (click)="openForm('delete')">Delete</button>
-    </div>
-  </div>
-
-  <div *ngIf="referees.length != 0" class="referees">
-    <div *ngFor="let referee of referees" class="referee">
-      <h1>{{referee?.name}}</h1>
-      <p>Date of Birth: {{referee?.dob | date}}</p>
-      <p>Age: {{referee?.age}} years old</p>
-      <div class="menu">
-        <button class="ref-button" (click)="openForm('update')">Edit</button>
-        <button class="ref-button" style="margin-left: 1rem" (click)="openForm('delete')">Delete</button>
-      </div>
-    </div>
-  </div>
+  <table id="referees">
+    <tr>
+      <th>Referee #</th>
+      <th>Full Name</th>
+      <th>Birthdate</th>
+      <th>Age</th>
+    </tr>
+    <tr *ngFor="let referee of referees">
+      <td>{{referee?.id}}</td>
+      <td>{{referee?.name}}</td>
+      <td>{{referee?.dob | date}}</td>
+      <td>{{referee?.age}}</td>
+    </tr>
+  </table>
 </div>
 
 <div class="shadow" id="shadow"></div>

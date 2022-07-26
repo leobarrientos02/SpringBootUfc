@@ -14,7 +14,6 @@ export class RefereeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllReferees();
   }
-  public referee: any;
   public referees: any[] = [];
 
   public getAllReferees(){
@@ -33,7 +32,6 @@ export class RefereeComponent implements OnInit {
     this.refereeService.getReferee(refereeId).subscribe(
       (response: any) => {
         console.log(response);
-        this.referee = response;
       },
       (error: HttpErrorResponse) => {
         console.log("Status Code: " + error.status + ", message: " + error.message);

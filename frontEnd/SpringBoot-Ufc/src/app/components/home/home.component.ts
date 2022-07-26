@@ -18,10 +18,10 @@ export class HomeComponent implements OnInit {
   }
 
   public getAllFights(){
-    this.fightService.getAllFights().subscribe(
+    this.fightService.getFightById(1).subscribe(
       (response: any) =>{
         console.log(response);
-        this.fightData = response[0];
+        this.fightData = response;
       },
       (error: HttpErrorResponse) => {
         console.log("Status Code: " + error.status + ", message: " + error.message);

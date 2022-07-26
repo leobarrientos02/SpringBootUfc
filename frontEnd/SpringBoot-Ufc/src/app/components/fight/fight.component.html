@@ -1,1 +1,30 @@
-<p>fight works!</p>
+<div class="fight-page">
+  <div class="fight-menu">
+    <h2>All Fights</h2>
+    <button class="menu-button">Add Fight</button>
+  </div>
+
+  <table id="fights">
+    <tr>
+      <th>Fight #</th>
+      <th>Fighter 1</th>
+      <th>Fighter 2</th>
+      <th>Weightclass</th>
+      <th>Fight Type</th>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Result</th>
+    </tr>
+    <tr *ngFor="let fight of fights">
+      <td>{{fight?.id}}</td>
+      <td>{{fight?.fighter1?.name}}</td>
+      <td>{{fight?.fighter2?.name}}</td>
+      <td>{{fight?.fighter1?.weightclass}}</td>
+      <td>{{fight?.fightType}}</td>
+      <td>{{fight?.location}}</td>
+      <td>{{fight?.date | date}}</td>
+      <td *ngIf="fight?.result != null">{{fight?.result}}</td>
+      <td *ngIf="fight?.result == null">TBA</td>
+    </tr>
+  </table>
+</div>
