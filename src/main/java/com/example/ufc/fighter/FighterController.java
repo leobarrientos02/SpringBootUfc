@@ -30,7 +30,7 @@ public class FighterController {
         return fighterService.getAllFighters();
     }
 
-    @GetMapping("{fighterId}")
+    @GetMapping(path="{fighterId}")
     public Fighter getFighterById(@PathVariable("fighterId") Long fighterId){
         Optional<Fighter> fighter = fighterService.getFighterById(fighterId);
         return fighter.orElse(null);

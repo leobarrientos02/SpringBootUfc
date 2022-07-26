@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fighter',
-  templateUrl: './fighter.component.html',
-  styleUrls: ['./fighter.component.scss']
+  templateUrl: './fighters.component.html',
+  styleUrls: ['./fighters.component.scss']
 })
 export class FightersComponent implements OnInit {
 
@@ -71,7 +71,7 @@ export class FightersComponent implements OnInit {
     form?.classList.remove('showForm');
   }
 
-  public goToFighterPage(fighterId: any){
-    this.router.navigate([`fighter/${fighterId}`]);
+  public goToFighterPage(id: any){
+    this.router.navigate([`fighter/${id}`]);
   }
 }

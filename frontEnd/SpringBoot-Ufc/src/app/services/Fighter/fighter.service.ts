@@ -18,7 +18,7 @@ export class FighterService {
 
   // Get Fighter by Id
   public getFighterById(fighterId: any): Observable<any>{
-    return this.http.get<any>(`${this.fightersUrl}/${fighterId}`, fighterId);
+    return this.http.get<any>(`${this.fightersUrl}/${fighterId}`);
   }
 
   // Add Fighter

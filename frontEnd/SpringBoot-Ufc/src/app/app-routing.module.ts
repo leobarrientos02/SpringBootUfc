@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RefereesComponent} from "./components/referees/referee.component";
+import { RefereesComponent} from "./components/referees/referees.component";
 import { FightsComponent } from "./components/fights/fight.component";
-import { FightersComponent } from "./components/fighters/fighter.component";
+import { FightersComponent } from "./components/fighters/fighters.component";
 import { HomeComponent } from "./components/home/home.component";
 import { FighterComponent } from './components/fighter/fighter.component';
 import { RefereeComponent } from './components/referee/referee.component';

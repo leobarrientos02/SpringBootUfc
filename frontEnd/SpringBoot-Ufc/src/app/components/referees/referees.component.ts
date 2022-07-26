@@ -6,8 +6,8 @@ import { RefereeService } from "../../services/Referee/referee.service";
 
 @Component({
   selector: 'app-referee',
-  templateUrl: './referee.component.html',
-  styleUrls: ['./referee.component.scss']
+  templateUrl: './referees.component.html',
+  styleUrls: ['./referees.component.scss']
 })
 export class RefereesComponent implements OnInit {
 
@@ -32,7 +32,7 @@ export class RefereesComponent implements OnInit {
   }
 
   public getRefereeById(refereeId: any){
-    this.refereeService.getReferee(refereeId).subscribe(
+    this.refereeService.getRefereeById(refereeId).subscribe(
       (response: any) => {
         console.log(response);
       },

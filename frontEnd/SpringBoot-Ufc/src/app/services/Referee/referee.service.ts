@@ -18,7 +18,7 @@ export class RefereeService {
   }
 
   // Get Referee
-  public getReferee(refereeId: any): Observable<any> {
+  public getRefereeById(refereeId: any): Observable<any> {
     return this.httpClient.get<any>(`${this.refereeUrl}/${refereeId}`);
   }
 

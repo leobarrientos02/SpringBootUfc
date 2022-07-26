@@ -31,19 +31,6 @@
 
 <div class="shadow" id="shadow"></div>
 
-<div class="deleteFighter" id="deleteFighter">
-  <div class="exit">
-    <button class="ref-button" (click)="closeForm('delete')">Close</button>
-  </div>
-  <h2>Delete Fighter</h2>
-  <form>
-    <div class="row">
-      <p>Are you sure you want to delete?</p>
-    </div>
-    <input type="submit" value="Delete Fighter" class="submit-button" />
-  </form>
-</div>
-
 <div class="addFighter" id="addFighter">
   <div class="exit">
     <button class="ref-button" (click)="closeForm('add')">Close</button>
@@ -71,27 +58,5 @@
       <input ngModel type="number" name="age" id="age" required placeholder="Enter your age" />
     </div>
     <input type="submit" value="Add Fighter" class="submit-button" />
-  </form>
-</div>
-
-<div class="updateFighter" id="updateFighter">
-  <div class="exit">
-    <button class="ref-button" (click)="closeForm('update')">Close</button>
-  </div>
-  <h2>Update Fighter</h2>
-  <form>
-    <div class="row">
-      <label for="name">Full Name</label>
-      <input type="text" name="name" id="name" required />
-    </div>
-    <div class="row" style="margin: 1rem 0">
-      <label for="dob">Date of Birth</label>
-      <input type="date" name="dob" id="dob" required />
-    </div>
-    <div class="row">
-      <label for="age">Age</label>
-      <input type="number" name="age" id="age" required />
-    </div>
-    <input type="submit" value="Update Fighter" class="submit-button" />
   </form>
 </div>

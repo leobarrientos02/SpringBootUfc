@@ -1,1 +1,83 @@
-<p>fighter works!</p>
+<div class="fighter-page">
+  <div class="fighter-title">
+    <h2>{{fighter?.name}}</h2>
+    <div class="menu">
+      <button (click)="openForm('update', fighter)" class="menu-button">Edit</button>
+      <button (click)="openForm('delete', fighter)" class="menu-button" style="margin-left: 1rem;">Delete</button>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="image">
+      <img *ngIf="fighter?.id %2 != 0" src="/assets/images/fighter2.png" alt="{{fighter?.name}}">
+      <img *ngIf="fighter?.id %2 == 0" src="/assets/images/fighter1.png" alt="{{fighter?.name}}">
+    </div>
+    <div class="biography">
+      <h3>Biography</h3>
+      <div class="data">
+        <p>Weight</p>
+        <span>{{fighter?.weight}} Lbs.</span>
+      </div>
+      <div class="data">
+        <p>Weightclass</p>
+        <span>{{fighter?.weightclass}}</span>
+      </div>
+      <div class="data">
+        <p>Height</p>
+        <span>{{fighter?.height}}</span>
+      </div>
+      <div class="data">
+        <p>Birth date</p>
+        <span>{{fighter?.dob | date}}</span>
+      </div>
+      <div class="data">
+        <p>Age</p>
+        <span>{{fighter?.age}} years old</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="shadow" id="shadow"></div>
+
+<div class="deleteFighter" id="deleteFighter">
+  <div class="exit">
+    <button  (click)="closeForm('delete')" class="ref-button">Close</button>
+  </div>
+  <h2>Delete Fighter</h2>
+  <form>
+    <div class="row">
+      <p style="width: 100%;text-align:center;">Are you sure you want to delete {{deleteFighter?.name}}?</p>
+    </div>
+    <input type="submit" value="Delete Fighter" class="submit-button" />
+  </form>
+</div>
+<div class="updateFighter" id="updateFighter">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('update')">Close</button>
+  </div>
+  <h2>Update Fighter</h2>
+  <form ngNativeValidate>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input ngModel="{{updateFighter?.name}}" type="text" name="name" id="name" required placeholder="Enter your full name" />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="weight">Weight</label>
+      <input ngModel="{{updateFighter?.weight}}" type="number" name="weight" id="weight" required placeholder="Enter your body weight" />
+    </div>
+    <div class="row">
+      <label for="height">Height</label>
+      <input ngModel="{{updateFighter?.height}}" type="text" name="height" id="height" required placeholder="6'5 inches" />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="dob">Date of Birth</label>
+      <input ngModel="{{updateFighter?.dob}}" type="date" name="dob" id="dob" required placeholder="Enter birthdate"/>
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input ngModel="{{updateFighter?.age}}" type="number" name="age" id="age" required placeholder="Enter your age" />
+    </div>
+    <input type="submit" value="Update Fighter" class="submit-button" />
+  </form>
+</div>

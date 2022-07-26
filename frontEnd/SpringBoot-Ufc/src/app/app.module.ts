@@ -5,11 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RefereesComponent } from './components/referees/referee.component';
+import { RefereesComponent } from './components/referees/referees.component';
 import { RefereeService } from './services/Referee/referee.service';
 import { NavComponent } from './components/nav/nav.component';
 import { FightsComponent } from './components/fights/fight.component';
-import { FightersComponent } from './components/fighters/fighter.component';
+import { FightersComponent } from './components/fighters/fighters.component';
 import { HomeComponent } from './components/home/home.component';
 import { FighterComponent } from './components/fighter/fighter.component';
 import { RefereeComponent } from './components/referee/referee.component';

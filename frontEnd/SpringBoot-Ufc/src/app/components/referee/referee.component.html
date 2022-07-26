@@ -1,1 +1,25 @@
-<p>referee works!</p>
+<div class="referee-page">
+
+  <div class="referee-title">
+    <h2>{{referee?.name}}</h2>
+    <div class="menu">
+      <button>Edit</button>
+      <button>Delete</button>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="image"></div>
+    <div class="biography">
+      <h3>Biography</h3>
+      <div class="data">
+        <p>Birth date</p>
+        <span>{{referee?.birthDate | date}}</span>
+      </div>
+      <div class="data">
+        <p>Age</p>
+        <span>{{referee?.age}} years old</span>
+      </div>
+    </div>
+  </div>
+</div>
