@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FightService } from "../../services/Fight/fight.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { FightService } from "../../services/Fight/fight.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private fightService: FightService) { }
+  constructor(private fightService: FightService, public router: Router) { }
 
   public fightData: any = {};
 
@@ -29,4 +30,7 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  public goToFighterPage(fighterId: any){
+    this.router.navigate([`fighter/${fighterId}`]);
+  }
 }

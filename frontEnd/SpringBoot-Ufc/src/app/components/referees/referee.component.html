@@ -1,0 +1,83 @@
+<div class="referee-page">
+  <div class="refereeMenu">
+    <h1>Referees Page</h1>
+    <button class="menu-button" (click)="openForm('add', '')">Add Referee</button>
+  </div>
+
+  <table id="referees">
+    <tr>
+      <th>Referee#</th>
+      <th>Full Name</th>
+      <th>Birthdate</th>
+      <th>Age</th>
+    </tr>
+    <tr *ngFor="let referee of referees">
+      <td>{{referee?.id}}</td>
+      <td (click)="goToRefereePage(referee?.id)" id="refereeLink">{{referee?.name}}</td>
+      <td>{{referee?.dob | date}}</td>
+      <td>{{referee?.age}}</td>
+    </tr>
+  </table>
+  <div *ngIf="referees.length < 1" class="nothing-to-show">
+    <p>No referees in SpringBoot Ufc.</p>
+  </div>
+</div>
+
+<div class="shadow" id="shadow"></div>
+
+<div class="deleteReferee" id="deleteReferee">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('delete')">Close</button>
+  </div>
+  <h2>Delete Referee</h2>
+  <form>
+    <div class="row">
+      <p>Are you sure you want to delete?</p>
+    </div>
+    <input type="submit" value="Delete Referee" class="submit-button" />
+  </form>
+</div>
+
+<div class="addReferee" id="addReferee">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('add')">Close</button>
+  </div>
+  <h2>Add Referee</h2>
+  <form #addReferee="ngForm" (ngSubmit)="onAddReferee(addReferee)" ngNativeValidate>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input ngModel type="text" name="name" id="name" required placeholder="Enter full name"/>
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="dob">Date of Birth</label>
+      <input ngModel type="date" name="dob" id="dob" required />
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input ngModel type="number" name="age" id="age" required placeholder="Enter Age" />
+    </div>
+    <input type="submit" value="Add Referee" class="submit-button" />
+  </form>
+</div>
+
+<div class="updateReferee" id="updateReferee">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('update')">Close</button>
+  </div>
+  <h2>Update Referee</h2>
+  <form #updateReferee="ngForm" (ngSubmit)="onUpdateReferee(updateReferee, editReferee?.id)" ngNativeValidate>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input ngModel="{{referee?.name}}" type="text" name="name" id="name" required />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="dov">Date of Birth</label>
+      <input ngModel="{{referee?.dob}}" type="date" name="dob" id="dob" required />
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input ngModel="{{referee?.age}}" type="number" name="age" id="age" required />
+    </div>
+    <input type="submit" value="Update Referee" class="submit-button" />
+  </form>
+</div>
