@@ -71,7 +71,13 @@ public class FighterService {
         Fighter fighter = fighterRepository.findById(fighterId)
                 .orElseThrow(()-> new IllegalStateException(
                         "Fighter with the id of " + fighterId + " does not exist"));
-        
+
+        if(dto.getName() != null && dto.getName().length() > 0){
+            fighter.setName(dto.getName());
+        }else{
+            throw new IllegalStateException("Please enter a valid name");
+        }
+
         if(dto.getAge() < 18){
             throw new IllegalStateException("We do not allow fighters under the age of 18");
         }else if(dto.getAge() == null){

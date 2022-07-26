@@ -59,14 +59,14 @@
     <button class="ref-button" (click)="closeForm('update')">Close</button>
   </div>
   <h2>Update Fighter</h2>
-  <form #fighterForm="ngForm" (ngSubmit)="onUpdateFighter(fighterForm, fighter?.id)" ngNativeValidate>
+  <form #updateFighterForm="ngForm" (ngSubmit)="onUpdateFighter(updateFighterForm, fighter?.id)" ngNativeValidate>
     <div class="row">
       <label for="name">Full Name</label>
       <input ngModel="{{fighter?.name}}" type="text" name="name" id="name" required placeholder="Enter your full name" />
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="weight">Weight</label>
-      <input ngModel="{{fighter?.weight}}" type="number" name="weight" id="weight" required placeholder="Enter your body weight" />
+      <input ngModel="{{fighter?.weight}}" type="number" step="0.01" name="weight" id="weight" required placeholder="Enter your body weight" />
     </div>
     <div class="row">
       <label for="height">Height</label>

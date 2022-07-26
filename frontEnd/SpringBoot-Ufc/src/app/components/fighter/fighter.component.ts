@@ -38,6 +38,7 @@ export class FighterComponent implements OnInit {
 
   // Update Fighter
   public onUpdateFighter(fighterForm: NgForm, fighterId: any){
+    console.log(fighterForm.value);
     this.fighterService.updateFighter(fighterForm.value, fighterId).subscribe(
       (response: any) => {
         this.getFighter();
