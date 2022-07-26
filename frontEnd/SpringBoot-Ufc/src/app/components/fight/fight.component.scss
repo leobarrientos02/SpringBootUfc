@@ -23,7 +23,7 @@
 
 .menu-button{
   border: none;
-  background: red;
+  background: #CC0000;
   color: white;
   padding: .25rem 1rem;
   font-size: 1rem;
@@ -57,6 +57,15 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: red;
+  background-color: #CC0000;
   color: white;
+}
+
+.nothing-to-show{
+  width: 100%;
+  padding: .5rem;
+  background: whitesmoke;
+  p{
+    font-size: 1.5rem;
+  }
 }

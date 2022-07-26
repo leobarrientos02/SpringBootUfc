@@ -16,5 +16,14 @@ export class FighterService {
     return this.http.get<any[]>(`${this.fightersUrl}`);
   }
 
+  // Get Fighter by Id
+  public getFighterById(fighterId: any): Observable<any>{
+    return this.http.get<any>(`${this.fightersUrl}/${fighterId}`, fighterId);
+  }
+
+  // Add Fighter
+  public addFighter(fighterForm: any): Observable<any>{
+    return this.http.post<any>(`${this.fightersUrl}`, fighterForm);
+  }
 
 }

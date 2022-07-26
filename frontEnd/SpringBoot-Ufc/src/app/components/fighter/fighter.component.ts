@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { FighterService } from "../../services/Fighter/fighter.service";
 
 @Component({
@@ -10,6 +11,7 @@ import { FighterService } from "../../services/Fighter/fighter.service";
 export class FighterComponent implements OnInit {
 
   public fighters: any = [];
+  public fighter: any;
   constructor(private fighterService: FighterService) { }
 
   ngOnInit(): void {
@@ -24,6 +26,31 @@ export class FighterComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         console.log("Status Code: " + error.status + ", message: " + error.message);
+      }
+    )
+  }
+
+  // Get Fighter by id
+  public getFighterById(fighterId: any){
+    this.fighterService.getFighterById(fighterId).subscribe(
+      (response: any) => {
+        this.fighter = response;
+      },
+      (error: HttpErrorResponse) => {
+        console.log("Status Code: " + error.status + ", message: " + error.message);
+      }
+    )
+  }
+
+  // Add fighter
+  public onAddFighter(fighterForm: NgForm){
+    this.fighterService.addFighter(fighterForm.value).subscribe(
+      (response: any) => {
+        this.closeForm('add');
+        this.getAllFighters();
+      },
+      (error: HttpErrorResponse) => {
+        console.log("Status Code: " + error.status + ", message: " + error.message)
       }
     )
   }

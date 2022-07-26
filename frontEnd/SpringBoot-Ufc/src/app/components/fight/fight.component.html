@@ -27,4 +27,7 @@
       <td *ngIf="fight?.result == null">TBA</td>
     </tr>
   </table>
+  <div *ngIf="fights.length < 1" class="nothing-to-show">
+    <p>No Fights in SpringBoot Ufc.</p>
+  </div>
 </div>

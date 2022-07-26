@@ -22,6 +22,9 @@ export class FightService {
   }
 
   // Add a Fight
+  public addFight(fightForm: any): Observable<any> {
+    return this.http.post<any>(`${this.fightUrl}`, fightForm);
+  }
 
   // Update a Fight
 
