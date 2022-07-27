@@ -30,6 +30,11 @@ public class FighterController {
         return fighterService.getAllFighters();
     }
 
+    @GetMapping(path="{fighterId}")
+    public Fighter getFighterById(@PathVariable("fighterId") Long fighterId){
+        Optional<Fighter> fighter = fighterService.getFighterById(fighterId);
+        return fighter.orElse(null);
+    }
     @PostMapping
     public void registerNewFighter(@RequestBody FighterDto dto){
         Fighter fighter = new Fighter();

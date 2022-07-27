@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +19,10 @@ public class RefereeService {
 
     public List<Referee> getAllReferees() {
         return refereeRepository.findAll();
+    }
+
+    public Optional<Referee> getRefereeById(Long refereeId){
+        return refereeRepository.findById(refereeId);
     }
 
     public void addNewReferee(Referee referee) {

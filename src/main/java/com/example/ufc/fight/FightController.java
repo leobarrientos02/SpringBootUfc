@@ -3,6 +3,7 @@ package com.example.ufc.fight;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/fight")
@@ -19,6 +20,11 @@ public class FightController {
         return fightService.getAllFights();
     }
 
+    @GetMapping(path = "{fightId}")
+    public Fight getFightById(@PathVariable("fightId") Long fightId){
+        Optional<Fight> fight = fightService.getFightById(fightId);
+        return fight.orElse(null);
+    }
     @PostMapping
     public void addFight(@RequestBody FightDto dto){
         fightService.addFight(dto);

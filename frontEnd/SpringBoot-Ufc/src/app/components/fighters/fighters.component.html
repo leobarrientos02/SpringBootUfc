@@ -1,0 +1,74 @@
+<div class="fighter-page">
+  <div class="fighterMenu">
+    <h1>Fighters Page</h1>
+    <button class="menu-button" (click)="openForm('add')">Add Fighter</button>
+  </div>
+
+  <table id="fighters">
+    <tr>
+      <th>Fighter#</th>
+      <th>Full Name</th>
+      <th>Weight</th>
+      <th>Weightclass</th>
+      <th>Height</th>
+      <th>Birthdate</th>
+      <th>Age</th>
+    </tr>
+    <tr *ngFor="let fighter of fighters">
+      <td>{{fighter?.id}}</td>
+      <td (click)="goToFighterPage(fighter?.id)" id="fighterLink">{{fighter?.name}}</td>
+      <td>{{fighter?.weight}} Lbs.</td>
+      <td>{{fighter?.weightclass}}</td>
+      <td>{{fighter?.height}}</td>
+      <td>{{fighter?.dob | date}}</td>
+      <td>{{fighter?.age}}</td>
+    </tr>
+  </table>
+  <div *ngIf="fighters.length < 1" class="nothing-to-show">
+    <p>No Fighters in SpringBoot Ufc.</p>
+  </div>
+</div>
+
+<div class="shadow" id="shadow"></div>
+
+<div class="addFighter" id="addFighter">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('add')">Close</button>
+  </div>
+  <h2>Add Fighter</h2>
+  <form #addFighter="ngForm" (ngSubmit)="onAddFighter(addFighter)" ngNativeValidate>
+    <div class="row">
+      <label for="name">Full Name</label>
+      <input
+        ngModel
+        type="text"
+        name="name"
+        id="name" required
+        placeholder="Enter your full name" />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="weight">Weight</label>
+      <input ngModel type="number" name="weight" id="weight" required placeholder="Enter your body weight" />
+    </div>
+    <div class="row">
+      <label for="height">Height</label>
+      <input ngModel type="text" name="height" id="height" required placeholder="6'5 inches" />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="dob">Date of Birth</label>
+      <input ngModel type="date" name="dob" id="dob" required placeholder="Enter birthdate"/>
+    </div>
+    <div class="row">
+      <label for="age">Age</label>
+      <input
+        ngModel
+        pattern="^[0-9]*$"
+        type="number"
+        name="age"
+        id="age"
+        required
+        placeholder="Enter your age" />
+    </div>
+    <input type="submit" value="Add Fighter" class="submit-button" />
+  </form>
+</div>

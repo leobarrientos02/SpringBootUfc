@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,19 +61,16 @@ public class FightService {
             throw new IllegalStateException("Please enter a date");
         }
 
-        Fighter bet = this.finalPrediction(fighter1.get(), fighter2.get());
-
         fight.setDescription(
                 fighter1.get().getName() + " is set to fight " +
                         fighter2.get().getName() +  " in a " +
                         fighter1.get().getWeightclass() + " " +
                         this.getFightType(dto.getFightType()) + " fight in the " +
-                        dto.getLocation() + " at " +
+                        dto.getLocation() + " in " +
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
                         referee.get().getName() + " as the referee. Looking at the betting odds " +
-                        bet.getName() + " is the favorite to win by " +
-                        this.getResult(dto.getResult())
+                        this.finalPrediction(fighter1.get(), fighter2.get())
         );
 
         if(dto.getLocation() == null){
@@ -144,6 +140,8 @@ public class FightService {
             return DRAW;
         }else if(result.toLowerCase().equals("doctor stoppage")){
             return DOCTOR_STOPPAGE;
+        }else if(result.toLowerCase().equals("tba")){
+            return TBA;
         }else{
             return null;
         }
@@ -186,19 +184,16 @@ public class FightService {
             throw new IllegalStateException("Please enter a date");
         }
 
-        Fighter bet = this.finalPrediction(fighter1.get(), fighter2.get());
-
         fight.setDescription(
                 fighter1.get().getName() + " is set to fight " +
                         fighter2.get().getName() +  " in a " +
                         fighter1.get().getWeightclass() + " " +
-                        this.getFightType(dto.getFightType()) + " fight in the " +
-                        dto.getLocation() + " at " +
+                        this.fightTypeConverter(dto.getFightType()) + " fight in the " +
+                        dto.getLocation() + " in " +
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
                         referee.get().getName() + " as the referee. Looking at the betting odds " +
-                        bet.getName() + " is the favorite to win by " +
-                        this.getResult(dto.getResult())
+                        this.finalPrediction(fighter1.get(), fighter2.get())
         );
 
         if(dto.getLocation() == null){
@@ -220,7 +215,11 @@ public class FightService {
         }
     }
 
-    public Fighter finalPrediction(Fighter fighter1, Fighter fighter2){
+    public Optional<Fight> getFightById(Long fightId) {
+        return fightRepository.findById(fightId);
+    }
+
+    public String finalPrediction(Fighter fighter1, Fighter fighter2){
         int fighter1Advantage = 0;
         int fighter2Advantage = 0;
         if(fighter1.getAge() < fighter2.getAge()){
@@ -237,16 +236,46 @@ public class FightService {
 
         int height1 = Integer.parseInt(fighter1.getHeight().replaceAll("[\\D]", ""));
         int height2 = Integer.parseInt(fighter2.getHeight().replaceAll("[\\D]", ""));
-        if(height1 < height2){
+        if(height1 > height2){
             fighter1Advantage = fighter1Advantage  + 1;
         }else{
             fighter2Advantage = fighter2Advantage  + 1;
         }
 
         if(fighter1Advantage < fighter2Advantage){
-            return fighter1;
+            String winBy = "";
+            if(fighter1.getWeight() > fighter2.getWeight()){
+                winBy = "knockout";
+            }else if(fighter1.getAge() > fighter2.getAge()){
+                winBy = "split decision";
+            }else if(height1 > height2){
+                winBy = "tko";
+            }
+            return fighter1.getName() + " is the favorite to win by " + winBy;
         }else{
-            return fighter2;
+            String winBy = "";
+            if(fighter2.getWeight() > fighter1.getWeight()){
+                winBy = "knockout";
+            }else if(fighter2.getAge() > fighter1.getAge()){
+                winBy = "split decision";
+            }else if(height2 > height1){
+                winBy = "tko";
+            }
+            return fighter2.getName() + " is the favorite to win by " + winBy;
         }
     }
+
+    public String fightTypeConverter(String fightType){
+        String clean = "";
+        if(fightType.equals("THREE_ROUNDS")){
+            clean = "3 rounds";
+        }else if(fightType.equals("FIVE_ROUNDS")){
+            clean = "5 rounds";
+        }else{
+            clean = "Championship";
+        }
+
+        return clean;
+    }
+
 }
