@@ -28,7 +28,6 @@ export class FighterComponent implements OnInit {
     this.fighterService.getFighterById(fighterId).subscribe(
       (response: any) => {
         this.fighter = response;
-        console.log(response);
       },
       (error: HttpErrorResponse) => {
         console.log("Status Code: " + error.status + ", message: " + error.message);
@@ -38,7 +37,6 @@ export class FighterComponent implements OnInit {
 
   // Update Fighter
   public onUpdateFighter(fighterForm: NgForm, fighterId: any){
-    console.log(fighterForm.value);
     this.fighterService.updateFighter(fighterForm.value, fighterId).subscribe(
       (response: any) => {
         this.getFighter();
