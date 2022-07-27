@@ -52,7 +52,7 @@ export class RefereeComponent implements OnInit {
   public onDeleteReferee(refereeId: any){
     this.refereeService.deleteReferee(refereeId).subscribe(
       (response: any) => {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/referee');
         this.closeForm('delete');
       },
       (error: HttpErrorResponse) => {

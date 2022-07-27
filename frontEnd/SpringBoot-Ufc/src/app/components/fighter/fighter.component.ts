@@ -54,7 +54,7 @@ export class FighterComponent implements OnInit {
   public onDeleteFighter(fighterId: any){
     this.fighterService.deleteFighter(fighterId).subscribe(
       (response: any) => {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/fighter');
         this.closeForm('delete');
       },
       (error: HttpErrorResponse) => {

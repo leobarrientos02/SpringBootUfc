@@ -109,7 +109,7 @@
     <button (click)="closeForm('delete')" class="ref-button">Close</button>
   </div>
   <h2>Delete Fight</h2>
-  <form>
+  <form (ngSubmit)="onDeleteFight(fight?.id)">
     <div class="row">
       <p style="width: 100%;text-align:center;">Are you sure you want to delete
         {{fight?.fighter1?.name}}

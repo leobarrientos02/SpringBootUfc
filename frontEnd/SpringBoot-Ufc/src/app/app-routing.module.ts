@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: "fighter/:id", component: FighterComponent},
   {path: "home", component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '**', component: HomeComponent},
 ];
 
 @NgModule({

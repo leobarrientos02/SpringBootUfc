@@ -92,6 +92,19 @@ export class FightComponent implements OnInit {
     )
   }
 
+  // Delete Fight
+  public onDeleteFight(fightId: any){
+    this.fightService.deleteFight(fightId).subscribe(
+      (response: any) => {
+        this.router.navigateByUrl('/fight');
+        this.closeForm('delete');
+      },
+      (error: HttpErrorResponse) =>{
+        console.log("Status Code: " + error.status + ", message: " + error.message);
+      }
+    )
+  }
+
   // Get all referees
   public getAllReferees(){
     this.refereeService.getReferees().subscribe(

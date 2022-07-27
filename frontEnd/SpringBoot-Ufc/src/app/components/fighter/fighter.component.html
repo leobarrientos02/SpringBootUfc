@@ -45,7 +45,7 @@
     <button  (click)="closeForm('delete')" class="ref-button">Close</button>
   </div>
   <h2>Delete Fighter</h2>
-  <form #fighterForm="ngForm" (ngSubmit)="onDeleteFighter(fighter?.id)">
+  <form (ngSubmit)="onDeleteFighter(fighter?.id)">
     <div class="row">
       <p style="width: 100%;text-align:center;">Are you sure you want to delete {{fighter?.name}}?</p>
     </div>
