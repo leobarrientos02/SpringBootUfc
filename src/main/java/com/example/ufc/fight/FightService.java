@@ -72,8 +72,7 @@ public class FightService {
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
                         referee.get().getName() + " as the referee. Looking at the betting odds " +
-                        bet.getName() + " is the favorite to win by " +
-                        this.getResult(dto.getResult())
+                        bet.getName() + " is the favorite to win by split decision"
         );
 
         if(dto.getLocation() == null){
@@ -198,8 +197,7 @@ public class FightService {
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
                         referee.get().getName() + " as the referee. Looking at the betting odds " +
-                        bet.getName() + " is the favorite to win by " +
-                        this.getResult(dto.getResult())
+                        bet.getName() + " is the favorite to win by split decision"
         );
 
         if(dto.getLocation() == null){

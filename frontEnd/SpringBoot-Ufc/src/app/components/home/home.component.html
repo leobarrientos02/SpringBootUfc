@@ -37,7 +37,9 @@
       <div class="fight-info">
         <p>{{fightData?.date | date}}</p>
         <p>{{fightData?.fighter1?.weightclass}}</p>
-        <p>{{fightData?.fightType}}</p>
+        <p *ngIf="fightData?.fightType == 'FIVE_ROUNDS'">5 Rounds</p>
+        <p *ngIf="fightData?.fightType == 'THREE_ROUNDS'">3 Rounds</p>
+        <p *ngIf="fightData?.fightType == 'CHAMPIONSHIP'">Championship</p>
         <p>{{fightData?.location}}</p>
         <p>Referee: {{fightData?.referee?.name}}</p>
       </div>

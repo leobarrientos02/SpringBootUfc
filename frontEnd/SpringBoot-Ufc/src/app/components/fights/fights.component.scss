@@ -109,6 +109,18 @@
       input {
         width: 40%;
         font-size: 1rem;
+        border: 1px solid #2f2f2f;
+        background: transparent;
+        border-radius: 3px;
+        padding: .2rem .5rem;
+      }
+      select{
+        width: 40%;
+        font-size: 1rem;
+        border: 1px solid #2f2f2f;
+        background: transparent;
+        border-radius: 3px;
+        padding: .2rem .5rem;
       }
     }
   }

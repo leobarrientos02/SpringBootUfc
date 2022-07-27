@@ -77,7 +77,6 @@ export class FightsComponent implements OnInit {
 
   // Add fight
   public onAddFight(fightForm: NgForm){
-    console.log(fightForm.value);
     this.fightService.addFight(fightForm.value).subscribe(
       (response: any) => {
         this.closeForm('add');
