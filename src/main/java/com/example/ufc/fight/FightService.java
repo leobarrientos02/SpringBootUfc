@@ -143,6 +143,8 @@ public class FightService {
             return DRAW;
         }else if(result.toLowerCase().equals("doctor stoppage")){
             return DOCTOR_STOPPAGE;
+        }else if(result.toLowerCase().equals("tba")){
+            return TBA;
         }else{
             return null;
         }

@@ -8,11 +8,12 @@ import { AppComponent } from './app.component';
 import { RefereesComponent } from './components/referees/referees.component';
 import { RefereeService } from './services/Referee/referee.service';
 import { NavComponent } from './components/nav/nav.component';
-import { FightsComponent } from './components/fights/fight.component';
+import { FightsComponent } from './components/fights/fights.component';
 import { FightersComponent } from './components/fighters/fighters.component';
 import { HomeComponent } from './components/home/home.component';
 import { FighterComponent } from './components/fighter/fighter.component';
 import { RefereeComponent } from './components/referee/referee.component';
+import { FightComponent } from './components/fight/fight.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RefereeComponent } from './components/referee/referee.component';
     FightersComponent,
     HomeComponent,
     FighterComponent,
-    RefereeComponent
+    RefereeComponent,
+    FightComponent
   ],
   imports: [
     BrowserModule,

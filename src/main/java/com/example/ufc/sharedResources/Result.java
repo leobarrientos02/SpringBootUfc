@@ -16,5 +16,7 @@ public enum Result {
     KO,
     TKO,
     DRAW,
-    DOCTOR_STOPPAGE
+    DOCTOR_STOPPAGE,
+
+    TBA
 }
