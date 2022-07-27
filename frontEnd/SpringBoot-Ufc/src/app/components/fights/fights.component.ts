@@ -46,12 +46,12 @@ export class FightsComponent implements OnInit {
     "Honda Center in Anaheim, California",
     "Prudential Center in Newark, New Jersey",
     "Toyota Center in Houston, Texas",
-    "Madison Square Garden in New York, New York",
+    "Madison Square Garden Arena in New York, New York",
     "Scotiabank Arena in Toronto, Ontario, Canada",
-    "CentreBell in Montreal, Quebec, Canada",
+    "CentreBell Arena in Montreal, Quebec, Canada",
     "Jeunesse Arena in Rio de Janeiro, Brazil",
     "United Center in Chicago, Illinois",
-    "The O2 in London, United Kingdom",
+    "The O2 Arena in London, United Kingdom",
     "UFC Apex in Las Vegas, Nevada"
   ];
 

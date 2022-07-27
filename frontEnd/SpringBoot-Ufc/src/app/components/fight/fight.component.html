@@ -127,7 +127,7 @@
   </div>
 
   <h2>Delete Fight</h2>
-  <form ngNativeValidate>
+  <form #updateFight="ngForm" (ngSubmit)="onUpdateFight(updateFight, fight?.id)" ngNativeValidate>
     <div class="row">
       <label for="fighter1">Fighter A</label>
       <select ngModel="{{fight?.fighter1?.name}}" name="fighter1" id="fighter1" required>

@@ -60,13 +60,13 @@ public class FightService {
         }else{
             throw new IllegalStateException("Please enter a date");
         }
-        
+
         fight.setDescription(
                 fighter1.get().getName() + " is set to fight " +
                         fighter2.get().getName() +  " in a " +
                         fighter1.get().getWeightclass() + " " +
                         this.getFightType(dto.getFightType()) + " fight in the " +
-                        dto.getLocation() + " at " +
+                        dto.getLocation() + " in " +
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
                         referee.get().getName() + " as the referee. Looking at the betting odds " +
@@ -188,8 +188,8 @@ public class FightService {
                 fighter1.get().getName() + " is set to fight " +
                         fighter2.get().getName() +  " in a " +
                         fighter1.get().getWeightclass() + " " +
-                        this.getFightType(dto.getFightType()) + " fight in the " +
-                        dto.getLocation() + " at " +
+                        this.fightTypeConverter(dto.getFightType()) + " fight in the " +
+                        dto.getLocation() + " in " +
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
                         referee.get().getName() + " as the referee. Looking at the betting odds " +
@@ -243,7 +243,6 @@ public class FightService {
         }
 
         if(fighter1Advantage < fighter2Advantage){
-            int odds = fighter1Advantage * 100;
             String winBy = "";
             if(fighter1.getWeight() > fighter2.getWeight()){
                 winBy = "knockout";
@@ -254,7 +253,6 @@ public class FightService {
             }
             return fighter1.getName() + " is the favorite to win by " + winBy;
         }else{
-            int odds = fighter2Advantage * 100;
             String winBy = "";
             if(fighter2.getWeight() > fighter1.getWeight()){
                 winBy = "knockout";
@@ -265,6 +263,19 @@ public class FightService {
             }
             return fighter2.getName() + " is the favorite to win by " + winBy;
         }
+    }
+
+    public String fightTypeConverter(String fightType){
+        String clean = "";
+        if(fightType.equals("THREE_ROUNDS")){
+            clean = "3 rounds";
+        }else if(fightType.equals("FIVE_ROUNDS")){
+            clean = "5 rounds";
+        }else{
+            clean = "Championship";
+        }
+
+        return clean;
     }
 
 }
