@@ -72,7 +72,6 @@ export class FightComponent implements OnInit {
     this.fightService.getFightById(fightId).subscribe(
       (response: any) => {
         this.fight = response;
-        console.log(response);
       },
       (error: HttpErrorResponse) =>{
         console.log("Status Code: " + error.status + ", message: " + error.message);

@@ -22,7 +22,6 @@ export class RefereesComponent implements OnInit {
   public getAllReferees(){
     this.refereeService.getReferees().subscribe(
       (response: any) => {
-        console.log(response);
         this.referees = response;
       },
       (error: HttpErrorResponse) => {
@@ -31,21 +30,9 @@ export class RefereesComponent implements OnInit {
     );
   }
 
-  public getRefereeById(refereeId: any){
-    this.refereeService.getRefereeById(refereeId).subscribe(
-      (response: any) => {
-        console.log(response);
-      },
-      (error: HttpErrorResponse) => {
-        console.log("Status Code: " + error.status + ", message: " + error.message);
-      }
-    )
-  }
-
   public onAddReferee(refereeForm: NgForm): void{
     this.refereeService.addReferee(refereeForm.value).subscribe(
       (response: any) => {
-        console.log(response);
         this.getAllReferees();
         this.closeForm('add');
       },

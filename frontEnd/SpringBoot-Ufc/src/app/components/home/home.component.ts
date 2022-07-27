@@ -15,13 +15,12 @@ export class HomeComponent implements OnInit {
   public fightData: any = {};
 
   ngOnInit(): void {
-    this.getAllFights();
+    this.getFight();
   }
 
-  public getAllFights(){
+  public getFight(){
     this.fightService.getFightById(1).subscribe(
       (response: any) =>{
-        console.log(response);
         this.fightData = response;
       },
       (error: HttpErrorResponse) => {
