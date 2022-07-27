@@ -60,9 +60,7 @@ public class FightService {
         }else{
             throw new IllegalStateException("Please enter a date");
         }
-
-        Fighter bet = this.finalPrediction(fighter1.get(), fighter2.get());
-
+        
         fight.setDescription(
                 fighter1.get().getName() + " is set to fight " +
                         fighter2.get().getName() +  " in a " +
@@ -72,7 +70,7 @@ public class FightService {
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
                         referee.get().getName() + " as the referee. Looking at the betting odds " +
-                        bet.getName() + " is the favorite to win by split decision"
+                        this.finalPrediction(fighter1.get(), fighter2.get())
         );
 
         if(dto.getLocation() == null){
@@ -186,8 +184,6 @@ public class FightService {
             throw new IllegalStateException("Please enter a date");
         }
 
-        Fighter bet = this.finalPrediction(fighter1.get(), fighter2.get());
-
         fight.setDescription(
                 fighter1.get().getName() + " is set to fight " +
                         fighter2.get().getName() +  " in a " +
@@ -197,7 +193,7 @@ public class FightService {
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
                         referee.get().getName() + " as the referee. Looking at the betting odds " +
-                        bet.getName() + " is the favorite to win by split decision"
+                        this.finalPrediction(fighter1.get(), fighter2.get())
         );
 
         if(dto.getLocation() == null){
@@ -223,7 +219,7 @@ public class FightService {
         return fightRepository.findById(fightId);
     }
 
-    public Fighter finalPrediction(Fighter fighter1, Fighter fighter2){
+    public String finalPrediction(Fighter fighter1, Fighter fighter2){
         int fighter1Advantage = 0;
         int fighter2Advantage = 0;
         if(fighter1.getAge() < fighter2.getAge()){
@@ -240,16 +236,35 @@ public class FightService {
 
         int height1 = Integer.parseInt(fighter1.getHeight().replaceAll("[\\D]", ""));
         int height2 = Integer.parseInt(fighter2.getHeight().replaceAll("[\\D]", ""));
-        if(height1 < height2){
+        if(height1 > height2){
             fighter1Advantage = fighter1Advantage  + 1;
         }else{
             fighter2Advantage = fighter2Advantage  + 1;
         }
 
         if(fighter1Advantage < fighter2Advantage){
-            return fighter1;
+            int odds = fighter1Advantage * 100;
+            String winBy = "";
+            if(fighter1.getWeight() > fighter2.getWeight()){
+                winBy = "knockout";
+            }else if(fighter1.getAge() > fighter2.getAge()){
+                winBy = "split decision";
+            }else if(height1 > height2){
+                winBy = "tko";
+            }
+            return fighter1.getName() + " is the favorite to win by " + winBy;
         }else{
-            return fighter2;
+            int odds = fighter2Advantage * 100;
+            String winBy = "";
+            if(fighter2.getWeight() > fighter1.getWeight()){
+                winBy = "knockout";
+            }else if(fighter2.getAge() > fighter1.getAge()){
+                winBy = "split decision";
+            }else if(height2 > height1){
+                winBy = "tko";
+            }
+            return fighter2.getName() + " is the favorite to win by " + winBy;
         }
     }
+
 }
