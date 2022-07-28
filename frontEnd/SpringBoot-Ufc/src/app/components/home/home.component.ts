@@ -32,4 +32,12 @@ export class HomeComponent implements OnInit {
   public goToFighterPage(fighterId: any){
     this.router.navigate([`fighter/${fighterId}`]);
   }
+
+  public goToRefereePage(refereeId: any){
+    this.router.navigate([`referee/${refereeId}`]);
+  }
+
+  public goToFightPage(id: any){
+    this.router.navigate([`fight/${id}`]);
+  }
 }
