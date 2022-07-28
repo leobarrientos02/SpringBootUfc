@@ -118,6 +118,7 @@ export class FightComponent implements OnInit {
       (response: any) => {
         this.getFightById();
         this.closeForm('update');
+        this.closeForm('updateResult');
       },
       (error: HttpErrorResponse) =>{
         console.log("Status Code: " + error.status + ", message: " + error.message);

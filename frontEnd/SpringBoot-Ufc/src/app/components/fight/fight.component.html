@@ -3,7 +3,7 @@
     <div class="title">
       <h2>
         {{fight?.fighter1?.name}}
-          <span style="color:#CC0000;">vs</span>
+        <span [ngClass]="[fight?.fightType == 'CHAMPIONSHIP' ? 'championshipText' : 'fightNightText']">vs</span>
         {{fight?.fighter2?.name}}
       </h2>
       <p>{{fightTypeFormatter(fight?.fightType)}} fight on {{fight?.date | date}}</p>
@@ -223,7 +223,7 @@
   <form #updateResultFight="ngForm" (ngSubmit)="onUpdateFight(updateResultFight, fight?.id)" ngNativeValidate>
     <div class="row">
       <label for="result">Set Result</label>
-      <select ngModel name="result" id="result" required>
+      <select ngModel="{{fight?.result}}" name="result" id="result" required>
         <option value="" disabled>Select Official Result</option>
         <option *ngFor="let result of results" value="{{result}}">
           {{result}}

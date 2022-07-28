@@ -121,8 +121,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-left: 1px solid #2f2f2f;
-    border-right: 1px solid #2f2f2f;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
     h2{
       font-size: 2rem;
       color: white;
@@ -136,7 +136,7 @@
     }
     .link{
       &:hover{
-        color: #CC0000;
+        color: #2f2f2f;
       }
     }
 
@@ -312,4 +312,12 @@
 
 .fightNight{
   background: #8d0000;
+}
+
+.championshipText{
+  color:#e2ac6b;
+}
+
+.fightNightText{
+  color: #8d0000;
 }

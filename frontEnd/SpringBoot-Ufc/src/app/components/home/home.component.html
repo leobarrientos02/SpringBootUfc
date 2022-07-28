@@ -4,7 +4,7 @@
     <p>Are you ready for the main event this weekend?</p>
     <h3 (click)="goToFightPage(fightData?.id)" >
       {{fightData?.fighter1?.name}}
-      vs
+      <span [ngClass]="[fightData?.fightType == 'CHAMPIONSHIP' ? 'championshipText' : 'fightNightText']">vs</span>
       {{fightData?.fighter2?.name}}
     </h3>
   </div>
@@ -24,7 +24,7 @@
             </div>
             <div class="row">
               <p>Reach</p>
-              <span>{{fightData?.fighter1?.reach}}</span>
+              <span>{{fightData?.fighter1?.reach}} inches</span>
             </div>
             <div class="row">
               <p>Weight</p>
@@ -36,7 +36,7 @@
             </div>
             <div class="row">
               <p>Age</p>
-              <span>{{fightData?.fighter1?.age}}</span>
+              <span>{{fightData?.fighter1?.age}} yrs old</span>
             </div>
             <div class="row">
               <p>Birthdate</p>
@@ -58,9 +58,7 @@
       <div class="fight-info">
         <p>{{fightData?.date | date}}</p>
         <p>{{fightData?.fighter1?.weightclass}}</p>
-        <p *ngIf="fightData?.fightType == 'FIVE_ROUNDS'">5 Rounds</p>
-        <p *ngIf="fightData?.fightType == 'THREE_ROUNDS'">3 Rounds</p>
-        <p *ngIf="fightData?.fightType == 'CHAMPIONSHIP'">Championship</p>
+        <p>{{fightTypeFormatter(fightData?.fightType)}}</p>
         <p>{{fightData?.location}}</p>
         <p
           (click)="goToRefereePage(fightData?.referee?.id)"
@@ -84,7 +82,7 @@
           </div>
           <div class="row">
             <p>Reach</p>
-            <span>{{fightData?.fighter2?.reach}}</span>
+            <span>{{fightData?.fighter2?.reach}} inches</span>
           </div>
           <div class="row">
             <p>Weight</p>
@@ -96,7 +94,7 @@
           </div>
           <div class="row">
             <p>Age</p>
-            <span>{{fightData?.fighter2?.age}}</span>
+            <span>{{fightData?.fighter2?.age}} yrs old</span>
           </div>
           <div class="row">
             <p>Birthdate</p>
