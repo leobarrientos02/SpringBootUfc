@@ -28,10 +28,10 @@
         id="fighterLink"
         >{{fight?.fighter2?.name}}</td>
       <td>{{fight?.fighter1?.weightclass}}</td>
-      <td>{{fight?.fightType}}</td>
+      <td>{{fightTypeFormatter(fight?.fightType)}}</td>
       <td>{{fight?.location}}</td>
       <td>{{fight?.date | date}}</td>
-      <td *ngIf="fight?.result != null">{{fight?.result}}</td>
+      <td>{{resultFormatter(fight?.result)}}</td>
     </tr>
   </table>
   <div *ngIf="fights.length < 1" class="nothing-to-show">

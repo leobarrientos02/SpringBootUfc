@@ -50,7 +50,9 @@
         align-items: center;
         justify-content: center;
         img{
-          width: 15rem;
+          object-fit: contain;
+          width: 20rem;
+          height: 20rem;
         }
       }
 

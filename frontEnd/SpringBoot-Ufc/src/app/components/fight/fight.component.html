@@ -6,22 +6,16 @@
           <span style="color:#CC0000;">vs</span>
         {{fight?.fighter2?.name}}
       </h2>
-      <p *ngIf="fight?.fightType == 'FIVE_ROUNDS'">5 Rounds fight on {{fight?.date | date}}</p>
-      <p *ngIf="fight?.fightType == 'THREE_ROUNDS'">3 Rounds fight on {{fight?.date | date}}</p>
-      <p *ngIf="fight?.fightType == 'CHAMPIONSHIP'">{{fight?.fighter1?.weightclass}} Championship fight on {{fight?.date | date}}</p>
+      <p>{{fightTypeFormatter(fight?.fightType)}} fight on {{fight?.date | date}}</p>
     </div>
     <div class="menu">
-      <button (click)="openForm('update')" class="menu-button">Edit</button>
-      <button (click)="openForm('delete')" class="menu-button" style="margin-left: 1rem;">Delete</button>
+      <button *ngIf="fight?.result == 'TBA'"(click)="openForm('updateResult')" class="menu-button">Update Result</button>
+      <button (click)="openForm('update')" class="menu-button" style="margin: 0 1rem;">Edit</button>
+      <button (click)="openForm('delete')" class="menu-button">Delete</button>
     </div>
   </div>
   <div class="result">
-    <p *ngIf="fight?.result == 'SPLIT_DECISION'">Result: Split Decision</p>
-    <p *ngIf="fight?.result == 'KO'">Result: Knockout</p>
-    <p *ngIf="fight?.result == 'TKO'">Result: Technical Knockout</p>
-    <p *ngIf="fight?.result == 'DRAW'">Result: Draw</p>
-    <p *ngIf="fight?.result == 'DOCTOR_STOPPAGE'">Result: Doctor Stoppage</p>
-    <p *ngIf="fight?.result == 'TBA'">Result: TBA</p>
+    <p>Result: {{resultFormatter(fight?.result)}}</p>
   </div>
   <div class="fight">
     <div class="left" style="border-top-right-radius:0; border-bottom-right-radius: 0;">
@@ -72,9 +66,7 @@
       <div class="fight-info">
         <p>{{fight?.date | date}}</p>
         <p>{{fight?.fighter1?.weightclass}}</p>
-        <p *ngIf="fight?.fightType == 'FIVE_ROUNDS'">5 Rounds</p>
-        <p *ngIf="fight?.fightType == 'THREE_ROUNDS'">3 Rounds</p>
-        <p *ngIf="fight?.fightType == 'CHAMPIONSHIP'">Championship</p>
+        <p>{{fightTypeFormatter(fight?.fightType)}}</p>
         <p>{{fight?.location}}</p>
         <p
           (click)="goToRefereePage(fight?.referee?.id)"
@@ -161,7 +153,7 @@
     <button class="ref-button" (click)="closeForm('update')">Close</button>
   </div>
 
-  <h2>Delete Fight</h2>
+  <h2>Update Fight</h2>
   <form #updateFight="ngForm" (ngSubmit)="onUpdateFight(updateFight, fight?.id)" ngNativeValidate>
     <div class="row">
       <label for="fighter1">Fighter A</label>
@@ -219,5 +211,32 @@
       <input type="hidden" name="result" ngModel="{{result}}">
     </div>
     <input type="submit" value="Update Fight" class="submit-button" />
+  </form>
+</div>
+
+<div class="updateResultFight" id="updateResultFight">
+  <div class="exit">
+    <button class="ref-button" (click)="closeForm('updateResult')">Close</button>
+  </div>
+
+  <h2>Update Fight Result</h2>
+  <form #updateResultFight="ngForm" (ngSubmit)="onUpdateFight(updateResultFight, fight?.id)" ngNativeValidate>
+    <div class="row">
+      <label for="result">Set Result</label>
+      <select ngModel name="result" id="result" required>
+        <option value="" disabled>Select Official Result</option>
+        <option *ngFor="let result of results" value="{{result}}">
+          {{result}}
+        </option>
+      </select>
+      <input type="hidden" ngModel="{{fight?.fighter1?.name}}" name="fighter1" >
+      <input type="hidden" ngModel="{{fight?.fighter2?.name}}" name="fighter2"  >
+      <input type="hidden" ngModel="{{fight?.fightType}}" name="fightType" >
+      <input type="hidden" ngModel="{{fight?.referee?.name}}" name="refereeName">
+      <input type="hidden" ngModel="{{fight?.date}}" name="date" >
+      <input type="hidden" ngModel="{{fight?.location}}" name="location" >
+    </div>
+
+    <input type="submit" value="Update Fight Results" class="submit-button" />
   </form>
 </div>

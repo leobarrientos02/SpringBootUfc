@@ -65,7 +65,7 @@ public class FightService {
                 fighter1.get().getName() + " is set to fight " +
                         fighter2.get().getName() +  " in a " +
                         fighter1.get().getWeightclass() + " " +
-                        this.getFightType(dto.getFightType()) + " fight in the " +
+                        this.fightTypeConverter(dto.getFightType()) + " fight in the " +
                         dto.getLocation() + " in " +
                         dto.getDate().getMonth() + " " + dto.getDate().getDayOfMonth() + " " +
                         dto.getDate().getYear() + " with " +
@@ -108,27 +108,7 @@ public class FightService {
     }
 
     public Result getResult(String result){
-        if(result.toLowerCase().equals("win ko")){
-            return WIN_KO;
-        }else if(result.toLowerCase().equals("win split decision")){
-            return WIN_SPLIT_DECISION;
-        }else if(result.toLowerCase().equals("win decision")){
-            return WIN_DECISION;
-        }else if( result.toLowerCase().equals("win tko")){
-            return WIN_TKO;
-        }else if(result.toLowerCase().equals("win disqualification")){
-            return WIN_DISQUALIFICATION;
-        }else if(result.toLowerCase().equals("lose ko")){
-            return LOSE_KO;
-        }else if(result.toLowerCase().equals("lose split decision")){
-            return LOSE_SPLIT_DECISION;
-        }else if(result.toLowerCase().equals("lose decision")){
-            return LOSE_DECISION;
-        }else if(result.toLowerCase().equals("lose tko")){
-            return LOSE_TKO;
-        }else if(result.toLowerCase().equals("lose disqualification")){
-            return LOSE_DISQUALIFICATION;
-        }else if(result.toLowerCase().equals("decision")){
+        if(result.toLowerCase().equals("decision")){
             return DECISION;
         }else if(result.toLowerCase().equals("split decision")){
             return SPLIT_DECISION;

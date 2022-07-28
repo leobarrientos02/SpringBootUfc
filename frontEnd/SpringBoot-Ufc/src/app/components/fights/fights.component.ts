@@ -134,4 +134,34 @@ export class FightsComponent implements OnInit {
   public goToFighterPage(id: any){
     this.router.navigate([`fighter/${id}`]);
   }
+
+  public fightTypeFormatter(fightType: String){
+    if(fightType == "CHAMPIONSHIP"){
+      return "Championship";
+    }else if(fightType == "THREE_ROUNDS"){
+      return "3 Rounds";
+    }else{
+      return "5 Rounds";
+    }
+  }
+
+  public resultFormatter(result: String){
+    if(result == "DECISION"){
+      return "Decision";
+    }else if(result == "SPLIT_DECISION"){
+      return "Split Decision";
+    }else if(result == "KO"){
+      return "Knockout";
+    }else if(result == "UNANIMOUS_DECISION"){
+      return "Unanimous Decision";
+    }else if(result == "TKO"){
+      return "Technical Knockout";
+    }else if(result == "DRAW"){
+      return "Draw";
+    }else if(result == "Doctor Stoppage"){
+      return "Doctor Stoppage";
+    }else{
+      return "TBA";
+    }
+  }
 }

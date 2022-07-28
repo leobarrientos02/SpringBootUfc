@@ -32,7 +32,6 @@ public class Fight {
     @OneToOne
     private Referee referee;
     private LocalDate date;
-
     private String location;
     private Result result;
     @Column(length=500)

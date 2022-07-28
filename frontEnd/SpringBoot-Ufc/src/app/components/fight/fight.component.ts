@@ -12,7 +12,6 @@ import { RefereeService } from 'src/app/services/Referee/referee.service';
   styleUrls: ['./fight.component.scss']
 })
 export class FightComponent implements OnInit {
-
   constructor(
     private fightService: FightService,
     private router: Router,
@@ -40,6 +39,15 @@ export class FightComponent implements OnInit {
   ];
 
   public result: String = "tba";
+  public results: any[] = [
+    "Decision",
+    "Split Decision",
+    "Unanimous Decision",
+    "Knockout",
+    "Technical Knockout",
+    "Draw",
+    "Doctor Stoppage",
+  ];
 
   public locations: string[] = [
     "T-Mobile Arena in Las Vegas, Nevada",
@@ -164,4 +172,35 @@ export class FightComponent implements OnInit {
   public goToRefereePage(refereeId: any){
     this.router.navigate([`referee/${refereeId}`]);
   }
+
+  public fightTypeFormatter(fightType: String){
+    if(fightType == "CHAMPIONSHIP"){
+      return "Championship";
+    }else if(fightType == "THREE_ROUNDS"){
+      return "3 Rounds";
+    }else{
+      return "5 Rounds";
+    }
+  }
+
+  public resultFormatter(result: String){
+    if(result == "DECISION"){
+      return "Decision";
+    }else if(result == "SPLIT_DECISION"){
+      return "Split Decision";
+    }else if(result == "KO"){
+      return "Knockout";
+    }else if(result == "UNANIMOUS_DECISION"){
+      return "Unanimous Decision";
+    }else if(result == "TKO"){
+      return "Technical Knockout";
+    }else if(result == "DRAW"){
+      return "Draw";
+    }else if(result == "Doctor Stoppage"){
+      return "Doctor Stoppage";
+    }else{
+      return "TBA";
+    }
+  }
+
 }
