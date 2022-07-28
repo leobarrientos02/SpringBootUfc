@@ -74,4 +74,5 @@ export class FightersComponent implements OnInit {
   public goToFighterPage(id: any){
     this.router.navigate([`fighter/${id}`]);
   }
+
 }

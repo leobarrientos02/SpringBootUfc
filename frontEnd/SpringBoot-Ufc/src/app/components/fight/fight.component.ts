@@ -144,6 +144,15 @@ export class FightComponent implements OnInit {
     form?.classList.remove('showForm');
   }
 
+  public closeAnyForm(){
+    const shadow = document.getElementById('shadow');
+    shadow?.classList.remove('showShadow');
+    const form = document.getElementById('updateFight');
+    form?.classList.remove('showForm');
+    const form2 = document.getElementById('deleteFight');
+    form2?.classList.remove('showForm');
+  }
+
   public goToFightPage(id: any){
     this.router.navigate([`fight/${id}`]);
   }

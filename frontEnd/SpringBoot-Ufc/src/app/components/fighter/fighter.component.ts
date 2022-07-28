@@ -74,4 +74,13 @@ export class FighterComponent implements OnInit {
     const form = document.getElementById(`${formType}Fighter`);
     form?.classList.remove('showForm');
   }
+
+  public closeAnyForm(){
+    const shadow = document.getElementById('shadow');
+    shadow?.classList.remove('showShadow');
+    const form = document.getElementById('updateFighter');
+    form?.classList.remove('showForm');
+    const form2 = document.getElementById('deleteFighter');
+    form2?.classList.remove('showForm');
+  }
 }
