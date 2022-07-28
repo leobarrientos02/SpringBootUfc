@@ -7,14 +7,16 @@ public class RefereeDto {
     private String name;
     private LocalDate dob;
     private Integer age;
+    private String imageUrl;
 
     public RefereeDto() {
     }
 
-    public RefereeDto(String name, LocalDate dob, Integer age) {
+    public RefereeDto(String name, LocalDate dob, Integer age, String imageUrl) {
         this.name = name;
         this.dob = dob;
         this.age = age;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -39,5 +41,13 @@ public class RefereeDto {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

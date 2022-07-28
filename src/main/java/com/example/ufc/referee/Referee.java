@@ -20,23 +20,29 @@ public class Referee {
     private Long id;
     private String name;
     private LocalDate dob;
-
     private Integer age;
+    private String imageUrl;
 
     public Referee() {
     }
 
-    public Referee(Long id, String name, LocalDate dob, Integer age) {
+    public Referee(Long id,
+                   String name,
+                   LocalDate dob,
+                   Integer age,
+                   String imageUrl) {
         this.id = id;
         this.name = name;
         this.dob = dob;
         this.age = age;
+        this.imageUrl = imageUrl;
     }
 
-    public Referee(String name, LocalDate dob, Integer age) {
+    public Referee(String name, LocalDate dob, Integer age,String imageUrl) {
         this.name = name;
         this.dob = dob;
         this.age = age;
+        this.imageUrl = imageUrl;
     }
 
     public Long getId() {
@@ -71,6 +77,14 @@ public class Referee {
         return age;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "Referee{" +
@@ -78,6 +92,7 @@ public class Referee {
                 ", name='" + name + '\'' +
                 ", dob=" + dob +
                 ", age=" + age +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

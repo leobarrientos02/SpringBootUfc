@@ -13,17 +13,37 @@ public class FighterDto {
 
     private String height;
 
+    private String reach;
+
     private String weightclass;
+
+    private LocalDate debut;
+
+    private String fightingOutOf;
+
+    private String imageUrl;
 
     public FighterDto() {
     }
 
-    public FighterDto(String name, LocalDate dob, Integer age, Double weight, String height) {
+    public FighterDto(String name,
+                      LocalDate dob,
+                      Integer age,
+                      Double weight,
+                      String height,
+                      String reach,
+                      String fightingOutOf,
+                      LocalDate debut,
+                      String imageUrl) {
         this.name = name;
         this.dob = dob;
         this.age = age;
         this.weight = weight;
         this.height = height;
+        this.reach = reach;
+        this.fightingOutOf = fightingOutOf;
+        this.debut = debut;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -72,5 +92,37 @@ public class FighterDto {
 
     public void setWeightclass(String weightclass) {
         this.weightclass = weightclass;
+    }
+
+    public String getReach() {
+        return reach;
+    }
+
+    public void setReach(String reach) {
+        this.reach = reach;
+    }
+
+    public LocalDate getDebut() {
+        return debut;
+    }
+
+    public void setDebut(LocalDate debut) {
+        this.debut = debut;
+    }
+
+    public String getFightingOutOf() {
+        return fightingOutOf;
+    }
+
+    public void setFightingOutOf(String fightingOutOf) {
+        this.fightingOutOf = fightingOutOf;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

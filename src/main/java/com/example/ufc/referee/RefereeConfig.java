@@ -15,10 +15,10 @@ public class RefereeConfig {
     CommandLineRunner refereeCommandLineRunner(RefereeRepository repository){
         return args -> {
             Referee herbDean = new Referee(
-                    1L,
                     "Herb Dean",
                     LocalDate.of(1970, SEPTEMBER, 30),
-                    51
+                    51,
+                    "https://ftw.usatoday.com/wp-content/uploads/sites/90/2020/07/herb.jpg?w=1000&h=600&crop=1"
             );
 
             // Save to database

@@ -41,8 +41,12 @@ public class FighterController {
         fighter.setName(dto.getName());
         fighter.setAge(dto.getAge());
         fighter.setDob(dto.getDob());
-        fighter.setHeight(dto.getHeight());
         fighter.setWeight(dto.getWeight());
+        fighter.setHeight(dto.getHeight());
+        fighter.setReach(dto.getReach());
+        fighter.setFightingOutOf(dto.getFightingOutOf());
+        fighter.setDebut(dto.getDebut());
+        fighter.setImageUrl(dto.getImageUrl());
         fighter.setWeightclass(fighterService.getWeightclass(dto.getWeight()));
         fighterService.addNewFighter(fighter);
     }

@@ -26,6 +26,7 @@ public class FighterService {
     public Optional<Fighter> getFighterById(Long fighterId){
         return fighterRepository.findById(fighterId);
     }
+
     public void addNewFighter(Fighter fighter) {
        Optional<Fighter> fighterOptional = fighterRepository
                .findFighterByName(fighter.getName());
@@ -33,28 +34,6 @@ public class FighterService {
            throw new IllegalStateException("Fighter already registered");
        }
        fighterRepository.save(fighter);
-    }
-
-    public Weightclass getWeightclass(Double weight){
-        if(weight >= 206 && weight <= 265){
-            return Heavyweight;
-        }else if(weight >= 186 && weight <= 205){
-            return Light_Heavyweight;
-        }else if(weight >= 171 && weight <= 185){
-            return Middleweight;
-        }else if(weight >= 156 && weight <= 170){
-            return Welterweight;
-        }else if(weight >= 146 && weight <= 155){
-            return Lightweight;
-        }else if(weight >= 136 && weight <= 145){
-            return Featherweight;
-        }else if(weight >= 126 && weight <= 135){
-            return Bantamweight;
-        }else if(weight >= 116 && weight <= 125) {
-            return Flyweight;
-        }else{
-            return Unknown;
-        }
     }
 
     public void deleteFighter(Long fighterId) {
@@ -115,6 +94,28 @@ public class FighterService {
             throw new IllegalStateException("Fighter was not found");
         }else{
             return fighter;
+        }
+    }
+
+    public Weightclass getWeightclass(Double weight){
+        if(weight >= 206 && weight <= 265){
+            return Heavyweight;
+        }else if(weight >= 186 && weight <= 205){
+            return Light_Heavyweight;
+        }else if(weight >= 171 && weight <= 185){
+            return Middleweight;
+        }else if(weight >= 156 && weight <= 170){
+            return Welterweight;
+        }else if(weight >= 146 && weight <= 155){
+            return Lightweight;
+        }else if(weight >= 136 && weight <= 145){
+            return Featherweight;
+        }else if(weight >= 126 && weight <= 135){
+            return Bantamweight;
+        }else if(weight >= 116 && weight <= 125) {
+            return Flyweight;
+        }else{
+            return Unknown;
         }
     }
 }

@@ -34,6 +34,7 @@ public class RefereeController {
         referee.setName(dto.getName());
         referee.setAge(dto.getAge());
         referee.setDob(dto.getDob());
+        referee.setImageUrl(dto.getImageUrl());
         refereeService.addNewReferee(referee);
     }
 

@@ -1,14 +1,9 @@
 package com.example.ufc.fighter;
 
-import com.example.ufc.fight.Fight;
 import com.example.ufc.sharedResources.Weightclass;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table
@@ -30,30 +25,40 @@ public class Fighter {
     private LocalDate dob;
     private Double weight;
     private String height;
+    private String reach;
     private Weightclass weightclass;
+    private LocalDate debut;
+    private String fightingOutOf;
+    private String imageUrl;
 
 
-    public Fighter() {
+    public Fighter() {}
 
-    }
-
-    public Fighter(Long id, String name, Integer age, LocalDate dob, Double weight, String height, Weightclass weightclass) {
+    public Fighter(Long id, String name, Integer age, LocalDate dob, Double weight, String height, String reach, Weightclass weightclass, LocalDate debut, String fightingOutOf, String imageUrl) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.dob = dob;
         this.weight = weight;
         this.height = height;
+        this.reach = reach;
         this.weightclass = weightclass;
+        this.debut = debut;
+        this.fightingOutOf = fightingOutOf;
+        this.imageUrl = imageUrl;
     }
 
-    public Fighter(String name, Integer age, LocalDate dob, Double weight, String height, Weightclass weightclass) {
+    public Fighter(String name, Integer age, LocalDate dob, Double weight, String height, String reach, Weightclass weightclass, LocalDate debut, String fightingOutOf, String imageUrl) {
         this.name = name;
         this.age = age;
         this.dob = dob;
         this.weight = weight;
         this.height = height;
+        this.reach = reach;
         this.weightclass = weightclass;
+        this.debut = debut;
+        this.fightingOutOf = fightingOutOf;
+        this.imageUrl = imageUrl;
     }
 
     public Long getId() {
@@ -104,13 +109,44 @@ public class Fighter {
         this.weightclass = weightclass;
     }
 
-
     public Integer getAge() {
         return age;
     }
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getFightingOutOf() {
+        return fightingOutOf;
+    }
+
+    public void setFightingOutOf(String fightingOutOf) {
+        this.fightingOutOf = fightingOutOf;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getReach() {
+        return reach;
+    }
+
+    public void setReach(String reach) {
+        this.reach = reach;
+    }
+
+    public LocalDate getDebut() {
+        return debut;
+    }
+
+    public void setDebut(LocalDate debut) {
+        this.debut = debut;
     }
 
     @Override
@@ -122,7 +158,11 @@ public class Fighter {
                 ", dob=" + dob +
                 ", weight=" + weight +
                 ", height='" + height + '\'' +
+                ", reach='" + reach + '\'' +
                 ", weightclass=" + weightclass +
+                ", debut=" + debut +
+                ", fightingOutOf='" + fightingOutOf + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }
