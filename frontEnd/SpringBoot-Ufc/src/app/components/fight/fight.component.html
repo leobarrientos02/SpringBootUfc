@@ -15,33 +15,56 @@
       <button (click)="openForm('delete')" class="menu-button" style="margin-left: 1rem;">Delete</button>
     </div>
   </div>
-
+  <div class="result">
+    <p *ngIf="fight?.result == 'SPLIT_DECISION'">Result: Split Decision</p>
+    <p *ngIf="fight?.result == 'KO'">Result: Knockout</p>
+    <p *ngIf="fight?.result == 'TKO'">Result: Technical Knockout</p>
+    <p *ngIf="fight?.result == 'DRAW'">Result: Draw</p>
+    <p *ngIf="fight?.result == 'DOCTOR_STOPPAGE'">Result: Doctor Stoppage</p>
+    <p *ngIf="fight?.result == 'TBA'">Result: TBA</p>
+  </div>
   <div class="fight">
-    <div class="left">
+    <div class="left" style="border-top-right-radius:0; border-bottom-right-radius: 0;">
       <div class="image">
-        <img src="/assets/images/fighter2.png" alt="{{fight?.fighter1?.name}}">
+        <img src="{{fight?.fighter1?.imageUrl}}" alt="{{fight?.fighter1?.name}}">
       </div>
       <div class="fighter-data">
           <h2 (click)="goToFighterPage(fight?.fighter1?.id)">{{fight?.fighter1?.name}}</h2>
-        <div class="stats">
-          <h3>Stats</h3>
-          <div class="row">
-            <p>Height</p>
-            <span>{{fight?.fighter1?.height}}</span>
+          <div class="stats">
+            <h3>Stats</h3>
+            <div class="row">
+              <p>Height</p>
+              <span>{{fight?.fighter1?.height}}</span>
+            </div>
+            <div class="row">
+              <p>Reach</p>
+              <span>{{fight?.fighter1?.reach}}</span>
+            </div>
+            <div class="row">
+              <p>Weight</p>
+              <span>{{fight?.fighter1?.weight}} Lbs.</span>
+            </div>
+            <div class="row">
+              <p>Weightclass</p>
+              <span>{{fight?.fighter1?.weightclass}}</span>
+            </div>
+            <div class="row">
+              <p>Age</p>
+              <span>{{fight?.fighter1?.age}}</span>
+            </div>
+            <div class="row">
+              <p>Birthdate</p>
+              <span>{{fight?.fighter1?.dob | date}}</span>
+            </div>
+            <div class="row">
+              <p>Fighting Out Of</p>
+              <span>{{fight?.fighter1?.fightingOutOf}}</span>
+            </div>
+            <div class="row">
+              <p>UFC Debut</p>
+              <span>{{fight?.fighter1?.debut | date}}</span>
+            </div>
           </div>
-          <div class="row">
-            <p>Weight</p>
-            <span>{{fight?.fighter1?.weight}} Lbs.</span>
-          </div>
-          <div class="row">
-            <p>Age</p>
-            <span>{{fight?.fighter1?.age}}</span>
-          </div>
-          <div class="row">
-            <p>Birthdate</p>
-            <span>{{fight?.fighter1?.dob | date}}</span>
-          </div>
-        </div>
       </div>
     </div>
     <div class="center" [ngClass]="[fight?.fightType == 'CHAMPIONSHIP' ? 'championship' : 'fightNight']">
@@ -53,12 +76,17 @@
         <p *ngIf="fight?.fightType == 'THREE_ROUNDS'">3 Rounds</p>
         <p *ngIf="fight?.fightType == 'CHAMPIONSHIP'">Championship</p>
         <p>{{fight?.location}}</p>
-        <p>Referee: {{fight?.referee?.name}}</p>
+        <p
+          (click)="goToRefereePage(fight?.referee?.id)"
+          class="link" style="cursor: pointer;"
+        >
+          Referee: {{fight?.referee?.name}}
+        </p>
       </div>
     </div>
-    <div class="right">
+    <div class="right" style="border-top-left-radius:0; border-bottom-left-radius: 0;">
       <div class="image">
-        <img src="/assets/images/fighter1.png" alt="{{fight?.fighter2?.name}}">
+        <img src="{{fight?.fighter2?.imageUrl}}" alt="{{fight?.fighter2?.name}}">
       </div>
       <div class="fighter-data">
         <h2 (click)="goToFighterPage(fight?.fighter2?.id)">{{fight?.fighter2?.name}}</h2>
@@ -69,8 +97,16 @@
             <span>{{fight?.fighter2?.height}}</span>
           </div>
           <div class="row">
+            <p>Reach</p>
+            <span>{{fight?.fighter2?.reach}}</span>
+          </div>
+          <div class="row">
             <p>Weight</p>
             <span>{{fight?.fighter2?.weight}} Lbs.</span>
+          </div>
+          <div class="row">
+            <p>Weightclass</p>
+            <span>{{fight?.fighter2?.weightclass}}</span>
           </div>
           <div class="row">
             <p>Age</p>
@@ -79,6 +115,14 @@
           <div class="row">
             <p>Birthdate</p>
             <span>{{fight?.fighter2?.dob | date}}</span>
+          </div>
+          <div class="row">
+            <p>Fighting Out Of</p>
+            <span>{{fight?.fighter2?.fightingOutOf}}</span>
+          </div>
+          <div class="row">
+            <p>UFC Debut</p>
+            <span>{{fight?.fighter2?.debut | date}}</span>
           </div>
         </div>
       </div>
@@ -89,15 +133,6 @@
     <p>Description:
       {{fight?.description}}.
     </p>
-  </div>
-
-  <div class="result">
-    <p *ngIf="fight?.result == 'SPLIT_DECISION'">Result: Split Decision</p>
-    <p *ngIf="fight?.result == 'KO'">Result: Knockout</p>
-    <p *ngIf="fight?.result == 'TKO'">Result: Technical Knockout</p>
-    <p *ngIf="fight?.result == 'DRAW'">Result: Draw</p>
-    <p *ngIf="fight?.result == 'DOCTOR_STOPPAGE'">Result: Doctor Stoppage</p>
-    <p *ngIf="fight?.result == 'TBA'">Result: TBA</p>
   </div>
 
 </div>

@@ -160,4 +160,8 @@ export class FightComponent implements OnInit {
   public goToFighterPage(id: any){
     this.router.navigate([`fighter/${id}`]);
   }
+
+  public goToRefereePage(refereeId: any){
+    this.router.navigate([`referee/${refereeId}`]);
+  }
 }
