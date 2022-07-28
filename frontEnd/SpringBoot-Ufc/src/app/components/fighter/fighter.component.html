@@ -9,8 +9,7 @@
 
   <div class="info">
     <div class="image">
-      <img *ngIf="fighter?.id %2 != 0" src="/assets/images/fighter2.png" alt="{{fighter?.name}}">
-      <img *ngIf="fighter?.id %2 == 0" src="/assets/images/fighter1.png" alt="{{fighter?.name}}">
+      <img src="{{fighter?.imageUrl}}" alt="{{fighter?.name}}">
     </div>
     <div class="biography">
       <h3>Biography</h3>
@@ -27,12 +26,24 @@
         <span>{{fighter?.height}}</span>
       </div>
       <div class="data">
+        <p>Reach</p>
+        <span>{{fighter?.reach}}</span>
+      </div>
+      <div class="data">
         <p>Birth date</p>
         <span>{{fighter?.dob | date}}</span>
       </div>
       <div class="data">
         <p>Age</p>
         <span>{{fighter?.age}} years old</span>
+      </div>
+      <div class="data">
+        <p>UFC Debut</p>
+        <span>{{fighter?.debut | date}}</span>
+      </div>
+      <div class="data">
+        <p>Fighting Out Of</p>
+        <span style="width: 50%;text-align: right;">{{fighter?.fightingOutOf}}</span>
       </div>
     </div>
   </div>
@@ -62,34 +73,39 @@
   <form #updateFighterForm="ngForm" (ngSubmit)="onUpdateFighter(updateFighterForm, fighter?.id)" ngNativeValidate>
     <div class="row">
       <label for="name">Full Name</label>
-      <input
-        ngModel="{{fighter?.name}}"
-        type="text"
-        name="name"
-        id="name" required
-        placeholder="Enter your full name" />
+      <input ngModel="{{fighter?.name}}" type="text" name="name" id="name" required placeholder="{{fighter?.name}}" />
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="weight">Weight</label>
-      <input ngModel="{{fighter?.weight}}" type="number" step="0.01" name="weight" id="weight" required placeholder="Enter your body weight" />
+      <input ngModel="{{fighter?.weight}}" type="number" step="0.01" name="weight" id="weight" required placeholder="{{fighter?.weight}}" />
     </div>
     <div class="row">
       <label for="height">Height</label>
-      <input ngModel="{{fighter?.height}}" type="text" name="height" id="height" required placeholder="6'5 inches" />
+      <input ngModel="{{fighter?.height}}" type="text" name="height" id="height" required placeholder="{{fighter?.height}}" />
+    </div>
+    <div class="row">
+      <label for="reach">Reach</label>
+      <input ngModel="{{fighter?.reach}}" type="number" step="0.01" name="reach" id="reach" required placeholder="{{fighter?.reach}}"/>
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="dob">Date of Birth</label>
-      <input ngModel="{{fighter?.dob}}" type="date" name="dob" id="dob" required placeholder="Enter birthdate"/>
+      <input ngModel="{{fighter?.dob}}" type="date" name="dob" id="dob" required placeholder="{{fighter?.dob}}" />
     </div>
     <div class="row">
       <label for="age">Age</label>
-      <input
-        ngModel="{{fighter?.age}}"
-        type="number"
-        pattern="^[0-9]*$"
-        name="age"
-        id="age" required
-        placeholder="Enter your age" />
+      <input ngModel="{{fighter?.age}}" type="number" pattern="^[0-9]*$" name="age" id="age" required placeholder="{{fighter?.age}}" />
+    </div>
+    <div class="row">
+      <label for="age">Fighting Out Of</label>
+      <input ngModel="{{fighter?.fightingOutOf}}" type="text" name="fightingOutOf" id="fightingOutOf" required placeholder="{{fighter?.fightingOutOf}}" />
+    </div>
+    <div class="row">
+      <label for="age">Debut</label>
+      <input ngModel="{{fighter?.debut}}" type="date" name="debut" id="debut" required placeholder="{{fighter?.debut}}" />
+    </div>
+    <div class="row">
+      <label for="age">Profile Picture</label>
+      <input ngModel="{{fighter?.imageUrl}}" type="url" name="imageUrl" id="imageUrl" required placeholder="{{fighter?.imageUrl}}" />
     </div>
     <input type="submit" value="Update Fighter" class="submit-button" />
   </form>

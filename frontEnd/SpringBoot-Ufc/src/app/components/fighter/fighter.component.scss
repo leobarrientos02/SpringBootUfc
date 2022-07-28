@@ -46,7 +46,7 @@
       justify-content: center;
       img{
         object-fit: cover;
-        width: 15rem;
+        width: 20rem;
         height: 30rem;
       }
     }
@@ -61,18 +61,23 @@
         text-decoration: underline;
       }
       .data{
-        margin: .4rem;
+        margin: .75rem;
         width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        font-size: 1.5rem;
+        p{
+          font-size: 1.4rem;
+        }
+        span{
+          font-size: 1.2rem;
+        }
       }
     }
   }
 }
 
-.updateFighter, .deleteFighter, .addFighter {
+.updateFighter, .deleteFighter{
   width: 50vw;
   border-radius: 1rem;
   border: 1px #2f2f2f solid;
@@ -107,7 +112,7 @@
         font-size: 1.5rem;
       }
       input {
-        width: 40%;
+        width: 50%;
         font-size: 1rem;
       }
     }
@@ -146,10 +151,7 @@
   height: 100vh;
   background: #2f2f2f1a;
   cursor: pointer;
-  transition: all 1s ease-in-out;
-  &:hover{
-    background:#f5202011;
-  }
+  transition: all .3s ease-in-out;
 }
 
 .ref-button{
@@ -168,7 +170,7 @@
 
 .showForm{
   position:absolute;
-  top: 20%;
+  top: 15%;
   left: 25%;
 }
 .showShadow{

@@ -39,36 +39,41 @@
   <form #addFighter="ngForm" (ngSubmit)="onAddFighter(addFighter)" ngNativeValidate>
     <div class="row">
       <label for="name">Full Name</label>
-      <input
-        ngModel
-        type="text"
-        name="name"
-        id="name" required
-        placeholder="Enter your full name" />
-    </div>
-    <div class="row" style="margin: 1rem 0">
-      <label for="weight">Weight</label>
-      <input ngModel type="number" name="weight" id="weight" required placeholder="Enter your body weight" />
-    </div>
-    <div class="row">
-      <label for="height">Height</label>
-      <input ngModel type="text" name="height" id="height" required placeholder="6'5 inches" />
+      <input ngModel type="text" name="name" id="name" required placeholder="Example: Dana White" />
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="dob">Date of Birth</label>
-      <input ngModel type="date" name="dob" id="dob" required placeholder="Enter birthdate"/>
+      <input ngModel type="date" name="dob" id="dob" required placeholder="MM/DD/YYYY" />
     </div>
     <div class="row">
       <label for="age">Age</label>
-      <input
-        ngModel
-        pattern="^[0-9]*$"
-        type="number"
-        name="age"
-        id="age"
-        required
-        placeholder="Enter your age" />
+      <input ngModel pattern="^[0-9]*$" type="number" name="age" id="age" required placeholder="Enter your age" />
     </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="weight">Weight</label>
+      <input ngModel type="number" name="weight" id="weight" required placeholder="Example: 155 lbs" />
+    </div>
+    <div class="row">
+      <label for="height">Height</label>
+      <input ngModel type="text" name="height" id="height" required placeholder="Example: 6ft 5in" />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="reach">Reach</label>
+      <input ngModel type="number" step="0.01" name="reach" id="reach" required placeholder="Example: 65in" />
+    </div>
+    <div class="row">
+      <label for="fightingOutOf">Fighting Out Of</label>
+      <input ngModel type="text" name="fightingOutOf" id="fightingOutOf" required placeholder="Enter current location" />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="debut">Debut Date</label>
+      <input ngModel type="date" name="debut" id="debut" required placeholder="MM/DD/YYYY" />
+    </div>
+    <div class="row">
+      <label for="imageUrl">Profile Picture</label>
+      <input ngModel type="url" name="imageUrl" id="imageUrl" required placeholder="Enter profile picture" />
+    </div>
+
     <input type="submit" value="Add Fighter" class="submit-button" />
   </form>
 </div>

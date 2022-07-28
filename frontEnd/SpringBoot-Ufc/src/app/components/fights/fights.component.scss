@@ -158,10 +158,7 @@
   height: 100vh;
   background: #2f2f2f1a;
   cursor: pointer;
-  transition: all 1s ease-in-out;
-  &:hover{
-    background:#f5202011;
-  }
+  transition: all .3s ease-in-out;
 }
 
 .ref-button{

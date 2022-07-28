@@ -89,10 +89,10 @@
       justify-content: space-between;
 
       label{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
       input {
-        width: 40%;
+        width: 50%;
         font-size: 1rem;
       }
     }
@@ -131,10 +131,7 @@
   height: 100vh;
   background: #2f2f2f1a;
   cursor: pointer;
-  transition: all 1s ease-in-out;
-  &:hover{
-    background:#f5202011;
-  }
+  transition: all .3s ease-in-out;
 }
 
 .ref-button{
@@ -153,7 +150,7 @@
 
 .showForm{
   position:absolute;
-  top: 20%;
+  top: 5%;
   left: 25%;
 }
 .showShadow{

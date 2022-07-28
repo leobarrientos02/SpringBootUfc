@@ -37,7 +37,7 @@
     </div>
     <div class="row" style="margin: 1rem 0">
       <label for="dob">Date of Birth</label>
-      <input ngModel type="date" name="dob" id="dob" required />
+      <input ngModel type="date" name="dob" id="dob" required placeholder="MM/DD/YYYY" />
     </div>
     <div class="row">
       <label for="age">Age</label>
@@ -49,6 +49,10 @@
         required
         pattern="^[0-9]*$"
         placeholder="Enter Age" />
+    </div>
+    <div class="row" style="margin: 1rem 0">
+      <label for="imageUrl">Profile Picture</label>
+      <input ngModel type="url" name="imageUrl" id="imageUrl" required placeholder="Enter profile picture"/>
     </div>
     <input type="submit" value="Add Referee" class="submit-button" />
   </form>
