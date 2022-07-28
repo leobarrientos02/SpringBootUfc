@@ -26,7 +26,7 @@ public class FighterConfig {
                 Featherweight,
                     LocalDate.of(2012, FEBRUARY, 4),
                     "Waianae, Hawaii, United States",
-                    "https://dmxg5wxfqgb4u.cloudfront.net/styles/gallery_collapsed_mobile_1x/s3/2022-06/063022-max-holloway-training-ufc-pi-33.jpg?itok=QJ4ppi6p"
+                    "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_matchup_stats_full_body/s3/2022-06/5e67898b-785a-4e9b-9689-57822748fc6f%252FHOLLOWAY_MAX_R_07-02.png?itok=dFI1r_2A"
             );
 
             Fighter alexanderVolkanovski = new Fighter(
@@ -39,7 +39,7 @@ public class FighterConfig {
                 Featherweight,
                     LocalDate.of(2016, NOVEMBER, 26),
                     "Windang, New South Wales, Australia",
-                    "https://www.sherdog.com/image_crop/200/300/_images/fighter/20220325081549_Alexander_Volkanovski_ff.JPG"
+                    "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-04/0984640e-8ef9-4283-afc3-d64ac0a0240a%252FVOLKANOVSKI_ALEXANDER_L_BELT_04-09.png?itok=2jQs8w9O"
             );
 
             // Save to database

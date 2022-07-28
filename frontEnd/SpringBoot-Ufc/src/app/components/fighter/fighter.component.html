@@ -93,7 +93,7 @@
     </div>
     <div class="row">
       <label for="age">Age</label>
-      <input ngModel="{{fighter?.age}}" type="number" pattern="^[0-9]*$" name="age" id="age" required placeholder="{{fighter?.age}}" />
+      <input ngModel="{{fighter?.age}}" min="18" max="65" type="number" pattern="^[0-9]*$" name="age" id="age" required placeholder="{{fighter?.age}}" />
     </div>
     <div class="row">
       <label for="age">Fighting Out Of</label>

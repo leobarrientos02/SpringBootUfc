@@ -85,6 +85,24 @@ public class FighterService {
         }else{
             fighter.setDob(dto.getDob());
         }
+
+        if(dto.getReach() == null){
+            throw new IllegalStateException("Please enter a reach");
+        }else{
+            fighter.setReach(dto.getReach());
+        }
+
+        if(dto.getFightingOutOf() == null){
+            throw new IllegalStateException("Please the location the fighter is fighting from");
+        }else{
+            fighter.setFightingOutOf(dto.getFightingOutOf());
+        }
+
+        if(dto.getImageUrl() == null){
+            fighter.setImageUrl("https://img.freepik.com/premium-vector/mma-fighter-stance-position-isolated-white_9645-1487.jpg?w=2000");
+        }else{
+            fighter.setImageUrl(dto.getImageUrl());
+        }
     }
 
     public Optional<Fighter> findFighterByName(String name){

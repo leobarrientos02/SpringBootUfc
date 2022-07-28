@@ -1,22 +1,22 @@
 package com.example.ufc.sharedResources;
 
 public enum Result {
-    WIN_KO,
-    WIN_SPLIT_DECISION,
-    WIN_DECISION,
-    WIN_TKO,
-    WIN_DISQUALIFICATION,
-    LOSE_KO,
-    LOSE_SPLIT_DECISION,
-    LOSE_DECISION,
-    LOSE_TKO,
-    LOSE_DISQUALIFICATION,
-    DECISION,
-    SPLIT_DECISION,
-    KO,
-    TKO,
-    DRAW,
-    DOCTOR_STOPPAGE,
 
-    TBA
+    DECISION("Decision"),
+    SPLIT_DECISION("Split Decision"),
+    UNANIMOUS_DECISION("Unanimous Decision"),
+    KO("Knockout"),
+    TKO("Technical Knockout"),
+    DRAW("Draw"),
+    DOCTOR_STOPPAGE("Doctor Stoppage"),
+    TBA("To Be Announced");
+
+
+    Result(String s) {
+    }
+
+    @Override
+    public String toString() {
+        return "Result{}";
+    }
 }
