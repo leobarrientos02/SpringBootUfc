@@ -11,7 +11,9 @@
       <th>Weight</th>
       <th>Weightclass</th>
       <th>Height</th>
+      <th>Reach</th>
       <th>Birthdate</th>
+      <th>Ufc Debut</th>
       <th>Age</th>
     </tr>
     <tr *ngFor="let fighter of fighters">
@@ -20,7 +22,9 @@
       <td>{{fighter?.weight}} Lbs.</td>
       <td>{{fighter?.weightclass}}</td>
       <td>{{fighter?.height}}</td>
+      <td>{{fighter?.reach}}in</td>
       <td>{{fighter?.dob | date}}</td>
+      <td>{{fighter?.debut | date}}</td>
       <td>{{fighter?.age}}</td>
     </tr>
   </table>

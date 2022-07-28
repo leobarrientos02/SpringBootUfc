@@ -13,7 +13,7 @@ public class FighterDto {
 
     private String height;
 
-    private String reach;
+    private Double reach;
 
     private String weightclass;
 
@@ -31,7 +31,7 @@ public class FighterDto {
                       Integer age,
                       Double weight,
                       String height,
-                      String reach,
+                      Double reach,
                       String fightingOutOf,
                       LocalDate debut,
                       String imageUrl) {
@@ -94,11 +94,11 @@ public class FighterDto {
         this.weightclass = weightclass;
     }
 
-    public String getReach() {
+    public Double getReach() {
         return reach;
     }
 
-    public void setReach(String reach) {
+    public void setReach(Double reach) {
         this.reach = reach;
     }
 

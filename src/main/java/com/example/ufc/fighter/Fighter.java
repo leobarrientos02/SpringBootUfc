@@ -25,7 +25,8 @@ public class Fighter {
     private LocalDate dob;
     private Double weight;
     private String height;
-    private String reach;
+
+    private Double reach;
     private Weightclass weightclass;
     private LocalDate debut;
     private String fightingOutOf;
@@ -34,7 +35,7 @@ public class Fighter {
 
     public Fighter() {}
 
-    public Fighter(Long id, String name, Integer age, LocalDate dob, Double weight, String height, String reach, Weightclass weightclass, LocalDate debut, String fightingOutOf, String imageUrl) {
+    public Fighter(Long id, String name, Integer age, LocalDate dob, Double weight, String height, Double reach, Weightclass weightclass, LocalDate debut, String fightingOutOf, String imageUrl) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -48,7 +49,7 @@ public class Fighter {
         this.imageUrl = imageUrl;
     }
 
-    public Fighter(String name, Integer age, LocalDate dob, Double weight, String height, String reach, Weightclass weightclass, LocalDate debut, String fightingOutOf, String imageUrl) {
+    public Fighter(String name, Integer age, LocalDate dob, Double weight, String height, Double reach, Weightclass weightclass, LocalDate debut, String fightingOutOf, String imageUrl) {
         this.name = name;
         this.age = age;
         this.dob = dob;
@@ -133,11 +134,11 @@ public class Fighter {
         this.imageUrl = imageUrl;
     }
 
-    public String getReach() {
+    public Double getReach() {
         return reach;
     }
 
-    public void setReach(String reach) {
+    public void setReach(Double reach) {
         this.reach = reach;
     }
 

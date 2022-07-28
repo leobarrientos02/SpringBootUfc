@@ -13,13 +13,27 @@ export class HomeComponent implements OnInit {
   constructor(private fightService: FightService, public router: Router) { }
 
   public fightData: any = {};
+  public fights: any[] = [];
+  public arraySize: any;
 
   ngOnInit(): void {
-    this.getFight();
+    this.getAllFights();
   }
 
-  public getFight(){
-    this.fightService.getFightById(1).subscribe(
+  public getAllFights(){
+    this.fightService.getAllFights().subscribe(
+      (response: any) =>{
+        this.fights = response;
+        this.getFight(Math.floor(Math.random() * response.length) + 1);
+      },
+      (error: HttpErrorResponse) => {
+        console.log("Status Code: " + error.status + ", message: " + error.message);
+      }
+    )
+  }
+
+  public getFight(fightId: any){
+    this.fightService.getFightById(fightId).subscribe(
       (response: any) =>{
         this.fightData = response;
       },
