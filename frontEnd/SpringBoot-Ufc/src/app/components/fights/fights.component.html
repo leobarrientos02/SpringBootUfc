@@ -31,7 +31,7 @@
       <td>{{fes.fightTypeFormatter(fight?.fightType)}}</td>
       <td>{{fight?.location}}</td>
       <td>{{fight?.date | date}}</td>
-      <td>{{fight?.winner?.name}} won by {{fes.resultFormatter(fight?.result)}}</td>
+      <td>{{fight?.winner?.name}} <span *ngIf="fight?.winner != null">won by</span>  {{fes.resultFormatter(fight?.result)}}</td>
     </tr>
   </table>
   <div *ngIf="fights.length < 1" class="nothing-to-show">

@@ -169,11 +169,7 @@ public class FightService {
         }else{
             fight.setWinner(winner.get());
         }
-        if(dto.getResult() != null){
-            fight.setResult(this.getResult(dto.getResult()));
-        }else{
-            throw new IllegalStateException("Please enter a date");
-        }
+        fight.setResult(this.getResult(dto.getResult()));
     }
 
     public Optional<Fight> getFightById(Long fightId) {

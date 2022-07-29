@@ -224,10 +224,10 @@
   </div>
 
   <h2>Update Fight Result</h2>
-  <form #updateResult="ngForm" (ngSubmit)="onUpdateFight(updateResult, fight?.id)" ngNativeValidate>
+  <form #updateResult="ngForm" (ngSubmit)="onUpdateResult(updateResult, fight?.id)" ngNativeValidate>
     <div class="row">
       <label for="result">Set Result</label>
-      <select ngModel="{{fight?.result}}" name="result" id="result" required>
+      <select ngModel name="result" id="result" required>
         <option value="" disabled>Select Official Result</option>
         <option *ngFor="let result of results" value="{{result}}">
           {{result}}
@@ -235,14 +235,11 @@
       </select>
     </div>
 
-    <div class="row">
-      <label for="fighter1">Fighter A</label>
+    <div class="row" style="margin: 1rem 0">
+      <label for="winner">Winner</label>
       <select ngModel name="winner" id="winner" required>
-        <option value="" disabled>Select the Winner</option>
-        <option *ngFor="let fighter of fighters"
-                value="{{fighter?.name}}">
-          {{fighter?.name}}
-        </option>
+        <option value="{{fight?.fighter1?.name}}">{{fight?.fighter1?.name}}</option>
+        <option value="{{fight?.fighter2?.name}}">{{fight?.fighter2?.name}}</option>
       </select>
     </div>
 

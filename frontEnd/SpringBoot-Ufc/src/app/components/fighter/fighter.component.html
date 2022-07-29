@@ -83,6 +83,10 @@
       </div>
     </div>
   </div>
+
+  <div class="noFights" *ngIf="filteredFights.length < 1">
+    <p>No Fights</p>
+  </div>
 </div>
 
 <div class="shadow" id="shadow" (click)="fes.closeAnyForm('Fighter')"></div>

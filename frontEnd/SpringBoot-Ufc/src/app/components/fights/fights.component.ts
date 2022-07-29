@@ -82,7 +82,7 @@ export class FightsComponent implements OnInit {
   public onAddFight(fightForm: NgForm){
     this.fightService.addFight(fightForm.value).subscribe(
       (response: any) => {
-        this.fes.closeForm('add','Fights');
+        this.fes.closeForm('add','Fight');
         this.getAllFights();
       },
       (error: HttpErrorResponse) =>{
