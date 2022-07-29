@@ -178,7 +178,7 @@
     <div class="row">
       <label for="fightType">Fight Type</label>
       <select ngModel="{{fight?.fightType}}" name="fightType" id="fightType" required>
-        <option value="" disabled>Select Fight Type</option>
+        <option value="Select Fight Type" disabled>Select Fight Type</option>
         <option *ngFor="let type of fightTypes" value="{{type}}">
           {{type}}
         </option>
