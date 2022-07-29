@@ -322,7 +322,7 @@
   color: #8d0000;
 }
 
-.block{
+.blockBtn{
   border: none;
   pointer-events: none;
   background: lightgrey;
@@ -331,4 +331,28 @@
   font-size: 1rem;
   border-radius: .25rem;
   cursor: pointer;
+}
+.block{
+  pointer-events: none;
+  select{
+    width: 40%;
+    font-size: 1rem;
+    border: 1px solid #2f2f2f;
+    color: grey;
+    background: lightgrey;
+    border-radius: 3px;
+    padding: .2rem .5rem;
+  }
+}
+.open{
+  pointer-events:all;
+  select{
+    cursor: pointer;
+    width: 40%;
+    font-size: 1rem;
+    border: 1px solid #2f2f2f;
+    background: transparent;
+    border-radius: 3px;
+    padding: .2rem .5rem;
+  }
 }

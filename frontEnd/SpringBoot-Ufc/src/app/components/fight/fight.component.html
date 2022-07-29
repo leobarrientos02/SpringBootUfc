@@ -10,7 +10,7 @@
     </div>
     <div class="menu">
       <button *ngIf="fight?.result == 'TBA'"(click)="openForm('updateResult')" class="menu-button">Update Result</button>
-      <button [ngClass]="[fight?.result != 'TBA' ? 'block' : 'menu-button']" (click)="openForm('update')" style="margin: 0 1rem;">Edit</button>
+      <button [ngClass]="[fight?.result != 'TBA' ? 'blockBtn' : 'menu-button']" (click)="openForm('update')" style="margin: 0 1rem;">Edit</button>
       <button (click)="openForm('delete')" class="menu-button">Delete</button>
     </div>
   </div>
@@ -159,17 +159,19 @@
       <label for="fighter1">Fighter A</label>
       <select ngModel="{{fight?.fighter1?.name}}" name="fighter1" id="fighter1" required>
         <option value="" disabled>Select Fighter A</option>
-        <option *ngFor="let fighter of fighters" value="{{fighter?.name}}">
+        <option *ngFor="let fighter of fighters"
+                value="{{fighter?.name}}"
+                (click)="selectFighterOne(fighter)">
           {{fighter?.name}}
         </option>
       </select>
     </div>
 
-    <div class="row" style="margin: 1rem 0">
+    <div class="row" style="margin: 1rem 0" [ngClass]="[filtered.length < 1 ? 'block' : 'open']">
       <label for="fighter2">Fighter B</label>
       <select ngModel="{{fight?.fighter2?.name}}" name="fighter2" id="fighter2" required>
         <option value="" disabled>Select Fighter B</option>
-        <option *ngFor="let fighter of fighters" value="{{fighter?.name}}">
+        <option *ngFor="let fighter of filtered" value="{{fighter?.name}}">
           {{fighter?.name}}
         </option>
       </select>
@@ -177,7 +179,7 @@
 
     <div class="row">
       <label for="fightType">Fight Type</label>
-      <select ngModel="{{fight?.fightType}}" name="fightType" id="fightType" required>
+      <select name="fightType" id="fightType" required>
         <option value="Select Fight Type" disabled>Select Fight Type</option>
         <option *ngFor="let type of fightTypes" value="{{type}}">
           {{type}}

@@ -21,6 +21,7 @@ export class FightsComponent implements OnInit {
     ) { }
 
   public fights: any[] = [];
+  public filtered: any[] = [];
   public weightClasses: string[] = [
     "Heavyweight",
     "Light Heavyweight",
@@ -163,5 +164,11 @@ export class FightsComponent implements OnInit {
     }else{
       return "TBA";
     }
+  }
+
+  public selectFighterOne(fighter: any){
+      this.filtered = this.fighters.filter(f => {
+        return f.name !== fighter.name;
+      });
   }
 }
