@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FrontEndFunctionsService } from 'src/app/services/FrontendFunctions/front-end-functions.service';
 import { RefereeService } from 'src/app/services/Referee/referee.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class RefereeComponent implements OnInit {
   constructor(
     private refereeService: RefereeService,
     private ARouter: ActivatedRoute,
+    public fes: FrontEndFunctionsService,
     private router: Router,) { }
   public referee: any;
 
@@ -39,7 +41,7 @@ export class RefereeComponent implements OnInit {
   public onUpdateReferee(updateReferee: NgForm, refereeId: any){
     this.refereeService.updateReferee(updateReferee.value, refereeId).subscribe(
       (response: any) => {
-        this.closeForm('update');
+        this.fes.closeForm('update','Referee');
         this.getReferee();
       },
       (error: HttpErrorResponse) => {
@@ -53,34 +55,11 @@ export class RefereeComponent implements OnInit {
     this.refereeService.deleteReferee(refereeId).subscribe(
       (response: any) => {
         this.router.navigateByUrl('/referee');
-        this.closeForm('delete');
+        this.fes.closeForm('delete','Referee');
       },
       (error: HttpErrorResponse) => {
         console.log("Status Code: " + error.status + ", message: " + error.message);
       }
     )
-  }
-
-  public openForm(formType: any){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.add('showShadow');
-    const form = document.getElementById(`${formType}Referee`);
-    form?.classList.add('showForm');
-  }
-
-  public closeForm(formType: any){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.remove('showShadow');
-    const form = document.getElementById(`${formType}Referee`);
-    form?.classList.remove('showForm');
-  }
-
-  public closeAnyForm(){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.remove('showShadow');
-    const form = document.getElementById('updateReferee');
-    form?.classList.remove('showForm');
-    const form2 = document.getElementById('deleteReferee');
-    form2?.classList.remove('showForm');
   }
 }

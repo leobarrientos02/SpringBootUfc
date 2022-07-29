@@ -25,6 +25,7 @@ public class FightController {
         Optional<Fight> fight = fightService.getFightById(fightId);
         return fight.orElse(null);
     }
+    
     @PostMapping
     public void addFight(@RequestBody FightDto dto){
         fightService.addFight(dto);

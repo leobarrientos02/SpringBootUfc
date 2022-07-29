@@ -25,7 +25,6 @@ public class Fighter {
     private LocalDate dob;
     private Double weight;
     private String height;
-
     private Double reach;
     private Weightclass weightclass;
     private LocalDate debut;

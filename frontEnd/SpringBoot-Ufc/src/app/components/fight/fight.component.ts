@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FightService } from 'src/app/services/Fight/fight.service';
 import { FighterService } from 'src/app/services/Fighter/fighter.service';
+import { FrontEndFunctionsService } from 'src/app/services/FrontendFunctions/front-end-functions.service';
 import { RefereeService } from 'src/app/services/Referee/referee.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class FightComponent implements OnInit {
     private router: Router,
     private ARouter: ActivatedRoute,
     private fighterService: FighterService,
-    private refereeService: RefereeService
+    private refereeService: RefereeService,
+    public fes: FrontEndFunctionsService
     ) { }
 
   public fights: any[] = [];
@@ -105,7 +107,7 @@ export class FightComponent implements OnInit {
     this.fightService.deleteFight(fightId).subscribe(
       (response: any) => {
         this.router.navigateByUrl('/fight');
-        this.closeForm('delete');
+        this.fes.closeForm('delete','Fight');
       },
       (error: HttpErrorResponse) =>{
         console.log("Status Code: " + error.status + ", message: " + error.message);
@@ -118,8 +120,8 @@ export class FightComponent implements OnInit {
     this.fightService.updateFight(fightForm.value, fightId).subscribe(
       (response: any) => {
         this.getFightById();
-        this.closeForm('update');
-        this.closeForm('updateResult');
+        this.fes.closeForm('update','Fight');
+        this.fes.closeForm('updateResult','Fight');
       },
       (error: HttpErrorResponse) =>{
         console.log("Status Code: " + error.status + ", message: " + error.message);
@@ -139,75 +141,9 @@ export class FightComponent implements OnInit {
     )
   }
 
-  // DOM Functions
-  public openForm(formType: any){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.add('showShadow');
-    const form = document.getElementById(`${formType}Fight`);
-    form?.classList.add('showForm');
-  }
-
-  public closeForm(formType: any){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.remove('showShadow');
-    const form = document.getElementById(`${formType}Fight`);
-    form?.classList.remove('showForm');
-  }
-
-  public closeAnyForm(){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.remove('showShadow');
-    const form = document.getElementById('updateFight');
-    form?.classList.remove('showForm');
-    const form2 = document.getElementById('deleteFight');
-    form2?.classList.remove('showForm');
-  }
-
-  public goToFightPage(id: any){
-    this.router.navigate([`fight/${id}`]);
-  }
-
-  public goToFighterPage(id: any){
-    this.router.navigate([`fighter/${id}`]);
-  }
-
-  public goToRefereePage(refereeId: any){
-    this.router.navigate([`referee/${refereeId}`]);
-  }
-
-  public fightTypeFormatter(fightType: String){
-    if(fightType == "CHAMPIONSHIP"){
-      return "Championship";
-    }else if(fightType == "THREE_ROUNDS"){
-      return "3 Rounds";
-    }else{
-      return "5 Rounds";
-    }
-  }
-
-  public resultFormatter(result: String){
-    if(result == "DECISION"){
-      return "Decision";
-    }else if(result == "SPLIT_DECISION"){
-      return "Split Decision";
-    }else if(result == "KO"){
-      return "Knockout";
-    }else if(result == "UNANIMOUS_DECISION"){
-      return "Unanimous Decision";
-    }else if(result == "TKO"){
-      return "Technical Knockout";
-    }else if(result == "DRAW"){
-      return "Draw";
-    }else if(result == "Doctor Stoppage"){
-      return "Doctor Stoppage";
-    }else{
-      return "TBA";
-    }
-  }
-
   public selectFighterOne(fighter: any){
     this.filtered = this.fighters.filter(f => {
       return f.name !== fighter.name;
     });
-}
+  }
 }

@@ -1,7 +1,7 @@
 <div class="referee-page">
   <div class="refereeMenu">
     <h1>Referees Page</h1>
-    <button class="menu-button" (click)="openForm('add', '')">Add Referee</button>
+    <button class="menu-button" (click)="fes.openForm('add', 'Referee')">Add Referee</button>
   </div>
 
   <table id="referees">
@@ -13,7 +13,7 @@
     </tr>
     <tr *ngFor="let referee of referees">
       <td>{{referee?.id}}</td>
-      <td (click)="goToRefereePage(referee?.id)" id="refereeLink">{{referee?.name}}</td>
+      <td (click)="fes.goToRefereePage(referee?.id)" id="refereeLink">{{referee?.name}}</td>
       <td>{{referee?.dob | date}}</td>
       <td>{{referee?.age}}</td>
     </tr>
@@ -23,11 +23,11 @@
   </div>
 </div>
 
-<div class="shadow" id="shadow" (click)="closeForm('add')"></div>
+<div class="shadow" id="shadow" (click)="fes.closeAnyForm('Referee')"></div>
 
 <div class="addReferee" id="addReferee">
   <div class="exit">
-    <button class="ref-button" (click)="closeForm('add')">Close</button>
+    <button class="ref-button" (click)="fes.closeForm('add','Referee')">Close</button>
   </div>
   <h2>Add Referee</h2>
   <form #addReferee="ngForm" (ngSubmit)="onAddReferee(addReferee)" ngNativeValidate>

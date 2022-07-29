@@ -1,7 +1,7 @@
 <div class="fighter-page">
   <div class="fighterMenu">
     <h1>Fighters Page</h1>
-    <button class="menu-button" (click)="openForm('add')">Add Fighter</button>
+    <button class="menu-button" (click)="fes.openForm('add','Fighter')">Add Fighter</button>
   </div>
 
   <table id="fighters">
@@ -18,7 +18,7 @@
     </tr>
     <tr *ngFor="let fighter of fighters">
       <td>{{fighter?.id}}</td>
-      <td (click)="goToFighterPage(fighter?.id)" id="fighterLink">{{fighter?.name}}</td>
+      <td (click)="fes.goToFighterPage(fighter?.id)" id="fighterLink">{{fighter?.name}}</td>
       <td>{{fighter?.weight}} Lbs.</td>
       <td>{{fighter?.weightclass}}</td>
       <td>{{fighter?.height}}</td>
@@ -33,11 +33,11 @@
   </div>
 </div>
 
-<div class="shadow" id="shadow" (click)="closeForm('add')"></div>
+<div class="shadow" id="shadow" (click)="fes.closeAnyForm('Fighter')"></div>
 
 <div class="addFighter" id="addFighter">
   <div class="exit">
-    <button class="ref-button" (click)="closeForm('add')">Close</button>
+    <button class="ref-button" (click)="fes.closeForm('add','Fighter')">Close</button>
   </div>
   <h2>Add Fighter</h2>
   <form #addFighter="ngForm" (ngSubmit)="onAddFighter(addFighter)" ngNativeValidate>

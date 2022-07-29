@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FighterService } from 'src/app/services/Fighter/fighter.service';
+import { FrontEndFunctionsService } from 'src/app/services/FrontendFunctions/front-end-functions.service';
 import { RefereeService } from 'src/app/services/Referee/referee.service';
 import { FightService } from "../../services/Fight/fight.service";
 
@@ -17,6 +18,7 @@ export class FightsComponent implements OnInit {
     private fightService: FightService,
     private router: Router,
     private fighterService: FighterService,
+    public fes: FrontEndFunctionsService,
     private refereeService: RefereeService
     ) { }
 
@@ -80,7 +82,7 @@ export class FightsComponent implements OnInit {
   public onAddFight(fightForm: NgForm){
     this.fightService.addFight(fightForm.value).subscribe(
       (response: any) => {
-        this.closeForm('add');
+        this.fes.closeForm('add','Fights');
         this.getAllFights();
       },
       (error: HttpErrorResponse) =>{
@@ -111,59 +113,6 @@ export class FightsComponent implements OnInit {
         console.log("Status Code: " + error.status + ", message: " + error.message);
       }
     )
-  }
-
-  // DOM Functions
-  public openForm(formType: any){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.add('showShadow');
-    const form = document.getElementById(`${formType}Fight`);
-    form?.classList.add('showForm');
-  }
-
-  public closeForm(formType: any){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.remove('showShadow');
-    const form = document.getElementById(`${formType}Fight`);
-    form?.classList.remove('showForm');
-  }
-
-  public goToFightPage(id: any){
-    this.router.navigate([`fight/${id}`]);
-  }
-
-  public goToFighterPage(id: any){
-    this.router.navigate([`fighter/${id}`]);
-  }
-
-  public fightTypeFormatter(fightType: String){
-    if(fightType == "CHAMPIONSHIP"){
-      return "Championship";
-    }else if(fightType == "THREE_ROUNDS"){
-      return "3 Rounds";
-    }else{
-      return "5 Rounds";
-    }
-  }
-
-  public resultFormatter(result: String){
-    if(result == "DECISION"){
-      return "Decision";
-    }else if(result == "SPLIT_DECISION"){
-      return "Split Decision";
-    }else if(result == "KO"){
-      return "Knockout";
-    }else if(result == "UNANIMOUS_DECISION"){
-      return "Unanimous Decision";
-    }else if(result == "TKO"){
-      return "Technical Knockout";
-    }else if(result == "DRAW"){
-      return "Draw";
-    }else if(result == "Doctor Stoppage"){
-      return "Doctor Stoppage";
-    }else{
-      return "TBA";
-    }
   }
 
   public selectFighterOne(fighter: any){

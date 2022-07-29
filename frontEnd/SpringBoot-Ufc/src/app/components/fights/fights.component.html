@@ -1,7 +1,7 @@
 <div class="fight-page">
   <div class="fight-menu">
     <h2>All Fights Page</h2>
-    <button (click)="openForm('add')" class="menu-button">Add Fight</button>
+    <button (click)="fes.openForm('add','Fight')" class="menu-button">Add Fight</button>
   </div>
 
   <table id="fights">
@@ -17,21 +17,21 @@
     </tr>
     <tr *ngFor="let fight of fights">
       <td>{{fight?.id}}
-        <p (click)="goToFightPage(fight?.id)" id="fightLink">view</p>
+        <p (click)="fes.goToFightPage(fight?.id)" id="fightLink">view</p>
       </td>
       <td
-        (click)="goToFighterPage(fight?.fighter1?.id)"
+        (click)="fes.goToFighterPage(fight?.fighter1?.id)"
         id="fighterLink"
         >{{fight?.fighter1?.name}}</td>
       <td
-        (click)="goToFighterPage(fight?.fighter2?.id)"
+        (click)="fes.goToFighterPage(fight?.fighter2?.id)"
         id="fighterLink"
         >{{fight?.fighter2?.name}}</td>
       <td>{{fight?.fighter1?.weightclass}}</td>
-      <td>{{fightTypeFormatter(fight?.fightType)}}</td>
+      <td>{{fes.fightTypeFormatter(fight?.fightType)}}</td>
       <td>{{fight?.location}}</td>
       <td>{{fight?.date | date}}</td>
-      <td>{{resultFormatter(fight?.result)}}</td>
+      <td>{{fes.resultFormatter(fight?.result)}}</td>
     </tr>
   </table>
   <div *ngIf="fights.length < 1" class="nothing-to-show">
@@ -39,11 +39,11 @@
   </div>
 </div>
 
-<div class="shadow" id="shadow" (click)="closeForm('add')"></div>
+<div class="shadow" id="shadow" (click)="fes.closeAnyForm('Fight')"></div>
 
 <div class="addFight" id="addFight">
   <div class="exit">
-    <button class="ref-button" (click)="closeForm('add')">Close</button>
+    <button class="ref-button" (click)="fes.closeForm('add','Fight')">Close</button>
   </div>
 
   <h2>Add Fight</h2>

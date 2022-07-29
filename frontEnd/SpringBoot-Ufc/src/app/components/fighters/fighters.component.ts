@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FighterService } from "../../services/Fighter/fighter.service";
 import { Router } from '@angular/router';
+import { FrontEndFunctionsService } from 'src/app/services/FrontendFunctions/front-end-functions.service';
 
 @Component({
   selector: 'app-fighter',
@@ -13,7 +14,10 @@ export class FightersComponent implements OnInit {
 
   public fighters: any = [];
   public fighter: any;
-  constructor(private fighterService: FighterService, public router: Router) { }
+  constructor(
+    private fighterService: FighterService,
+    public fes: FrontEndFunctionsService,
+    public router: Router) { }
 
   ngOnInit(): void {
     this.getAllFighters();
@@ -47,7 +51,7 @@ export class FightersComponent implements OnInit {
   public onAddFighter(fighterForm: NgForm){
     this.fighterService.addFighter(fighterForm.value).subscribe(
       (response: any) => {
-        this.closeForm('add');
+        this.fes.closeForm('add','Fighter');
         this.getAllFighters();
       },
       (error: HttpErrorResponse) => {
@@ -55,24 +59,4 @@ export class FightersComponent implements OnInit {
       }
     )
   }
-
-  // DOM Functions
-  public openForm(formType: any){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.add('showShadow');
-    const form = document.getElementById(`${formType}Fighter`);
-    form?.classList.add('showForm');
-  }
-
-  public closeForm(formType: any){
-    const shadow = document.getElementById('shadow');
-    shadow?.classList.remove('showShadow');
-    const form = document.getElementById(`${formType}Fighter`);
-    form?.classList.remove('showForm');
-  }
-
-  public goToFighterPage(id: any){
-    this.router.navigate([`fighter/${id}`]);
-  }
-
 }

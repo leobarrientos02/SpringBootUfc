@@ -2,8 +2,8 @@
   <div class="referee-title">
     <h2>{{referee?.name}}</h2>
     <div class="menu">
-      <button (click)="openForm('update')" class="menu-button">Edit</button>
-      <button (click)="openForm('delete')" class="menu-button" style="margin-left: 1rem;">Delete</button>
+      <button (click)="fes.openForm('update','Referee')" class="menu-button">Edit</button>
+      <button (click)="fes.openForm('delete','Referee')" class="menu-button" style="margin-left: 1rem;">Delete</button>
     </div>
   </div>
 
@@ -25,11 +25,11 @@
   </div>
 </div>
 
-<div class="shadow" id="shadow" (click)="closeAnyForm()"></div>
+<div class="shadow" id="shadow" (click)="fes.closeAnyForm('Referee')"></div>
 
 <div class="deleteReferee" id="deleteReferee">
   <div class="exit">
-    <button  (click)="closeForm('delete')" class="ref-button">Close</button>
+    <button  (click)="fes.closeForm('delete','Referee')" class="ref-button">Close</button>
   </div>
   <h2>Delete Referee</h2>
   <form (ngSubmit)="onDeleteReferee(referee?.id)">
@@ -43,7 +43,7 @@
 
 <div class="updateReferee" id="updateReferee">
   <div class="exit">
-    <button class="ref-button" (click)="closeForm('update')">Close</button>
+    <button class="ref-button" (click)="fes.closeForm('update','Referee')">Close</button>
   </div>
   <h2>Update Referee</h2>
   <form #updateRefereeForm="ngForm" (ngSubmit)="onUpdateReferee(updateRefereeForm, referee?.id)" ngNativeValidate>

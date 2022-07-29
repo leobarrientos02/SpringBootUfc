@@ -2,8 +2,8 @@
   <div class="fighter-title">
     <h2>{{fighter?.name}}</h2>
     <div class="menu">
-      <button (click)="openForm('update')" class="menu-button">Edit</button>
-      <button (click)="openForm('delete')" class="menu-button" style="margin-left: 1rem;">Delete</button>
+      <button (click)="fes.openForm('update','Fighter')" class="menu-button">Edit</button>
+      <button (click)="fes.openForm('delete','Fighter')" class="menu-button" style="margin-left: 1rem;">Delete</button>
     </div>
   </div>
 
@@ -47,13 +47,17 @@
       </div>
     </div>
   </div>
+
+  <div class="fights">
+    <h2>{{fighter?.name}}'s' fight history</h2>
+  </div>
 </div>
 
-<div class="shadow" id="shadow" (click)="closeAnyForm()"></div>
+<div class="shadow" id="shadow" (click)="fes.closeAnyForm('Fighter')"></div>
 
 <div class="deleteFighter" id="deleteFighter">
   <div class="exit">
-    <button  (click)="closeForm('delete')" class="ref-button">Close</button>
+    <button (click)="fes.closeForm('delete','Fighter')" class="ref-button">Close</button>
   </div>
   <h2>Delete Fighter</h2>
   <form (ngSubmit)="onDeleteFighter(fighter?.id)">
@@ -67,7 +71,7 @@
 
 <div class="updateFighter" id="updateFighter">
   <div class="exit">
-    <button class="ref-button" (click)="closeForm('update')">Close</button>
+    <button class="ref-button" (click)="fes.closeForm('update','Fighter')">Close</button>
   </div>
   <h2>Update Fighter</h2>
   <form #updateFighterForm="ngForm" (ngSubmit)="onUpdateFighter(updateFighterForm, fighter?.id)" ngNativeValidate>
