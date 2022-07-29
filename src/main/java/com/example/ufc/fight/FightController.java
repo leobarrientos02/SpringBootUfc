@@ -25,7 +25,7 @@ public class FightController {
         Optional<Fight> fight = fightService.getFightById(fightId);
         return fight.orElse(null);
     }
-    
+
     @PostMapping
     public void addFight(@RequestBody FightDto dto){
         fightService.addFight(dto);
@@ -43,4 +43,10 @@ public class FightController {
         fightService.updateFight(fightId, dto);
     }
 
+    @PutMapping(path = "result/{fightId}")
+    public void updateResult(
+            @PathVariable("fightId") Long fightId,
+            @RequestBody ResultDto dto){
+        fightService.updateResult(fightId,dto);
+    }
 }

@@ -15,7 +15,10 @@
     </div>
   </div>
   <div class="result">
-    <p>Result: {{fes.resultFormatter(fight?.result)}}</p>
+    <p>Result:
+      <span *ngIf="fight?.winner != null">{{fight?.winner?.name}} won by </span>
+      {{fes.resultFormatter(fight?.result)}}
+    </p>
   </div>
   <div class="fight">
     <div class="left" style="border-top-right-radius:0; border-bottom-right-radius: 0;">
@@ -210,7 +213,6 @@
           {{location}}
         </option>
       </select>
-      <input type="hidden" name="result" ngModel="{{result}}">
     </div>
     <input type="submit" value="Update Fight" class="submit-button" />
   </form>
@@ -222,7 +224,7 @@
   </div>
 
   <h2>Update Fight Result</h2>
-  <form #updateResultFight="ngForm" (ngSubmit)="onUpdateFight(updateResultFight, fight?.id)" ngNativeValidate>
+  <form #updateResult="ngForm" (ngSubmit)="onUpdateFight(updateResult, fight?.id)" ngNativeValidate>
     <div class="row">
       <label for="result">Set Result</label>
       <select ngModel="{{fight?.result}}" name="result" id="result" required>
@@ -231,12 +233,17 @@
           {{result}}
         </option>
       </select>
-      <input type="hidden" ngModel="{{fight?.fighter1?.name}}" name="fighter1" >
-      <input type="hidden" ngModel="{{fight?.fighter2?.name}}" name="fighter2"  >
-      <input type="hidden" ngModel="{{fight?.fightType}}" name="fightType" >
-      <input type="hidden" ngModel="{{fight?.referee?.name}}" name="refereeName">
-      <input type="hidden" ngModel="{{fight?.date}}" name="date" >
-      <input type="hidden" ngModel="{{fight?.location}}" name="location" >
+    </div>
+
+    <div class="row">
+      <label for="fighter1">Fighter A</label>
+      <select ngModel name="winner" id="winner" required>
+        <option value="" disabled>Select the Winner</option>
+        <option *ngFor="let fighter of fighters"
+                value="{{fighter?.name}}">
+          {{fighter?.name}}
+        </option>
+      </select>
     </div>
 
     <input type="submit" value="Update Fight Results" class="submit-button" />

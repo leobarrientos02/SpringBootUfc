@@ -121,6 +121,17 @@ export class FightComponent implements OnInit {
       (response: any) => {
         this.getFightById();
         this.fes.closeForm('update','Fight');
+      },
+      (error: HttpErrorResponse) =>{
+        console.log("Status Code: " + error.status + ", message: " + error.message);
+      }
+    )
+  }
+
+  public onUpdateResult(resultForm: NgForm, fightId: any){
+    this.fightService.updateResult(resultForm.value, fightId).subscribe(
+      (response: any) => {
+        this.getFightById();
         this.fes.closeForm('updateResult','Fight');
       },
       (error: HttpErrorResponse) =>{

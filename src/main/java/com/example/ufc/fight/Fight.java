@@ -4,11 +4,10 @@ import com.example.ufc.fighter.Fighter;
 import com.example.ufc.referee.Referee;
 import com.example.ufc.sharedResources.FightType;
 import com.example.ufc.sharedResources.Result;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Objects;
+
 @Entity
 @Table
 public class Fight {
@@ -34,6 +33,8 @@ public class Fight {
     private LocalDate date;
     private String location;
     private Result result;
+    @OneToOne
+    private Fighter winner;
     @Column(length=500)
     private String description;
 
@@ -50,6 +51,7 @@ public class Fight {
         this.location = location;
         this.result = result;
         this.description = description;
+        this.winner = null;
     }
 
     public Fight(Fighter fighter1, Fighter fighter2, FightType fightType, Referee referee, LocalDate date, String location, Result result, String description) {
@@ -61,6 +63,7 @@ public class Fight {
         this.location = location;
         this.result = result;
         this.description = description;
+        this.winner = null;
     }
 
     public Long getId() {
@@ -135,6 +138,14 @@ public class Fight {
         this.description = description;
     }
 
+    public Fighter getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Fighter winner) {
+        this.winner = winner;
+    }
+
     @Override
     public String toString() {
         return "Fight{" +
@@ -146,20 +157,8 @@ public class Fight {
                 ", date=" + date +
                 ", location='" + location + '\'' +
                 ", result=" + result +
+                ", winner='" + winner + '\'' +
                 ", description='" + description + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Fight)) return false;
-        Fight fight = (Fight) o;
-        return Objects.equals(getId(), fight.getId()) && Objects.equals(getFighter1(), fight.getFighter1()) && Objects.equals(getFighter2(), fight.getFighter2()) && getFightType() == fight.getFightType() && Objects.equals(getReferee(), fight.getReferee()) && Objects.equals(getDate(), fight.getDate()) && Objects.equals(getLocation(), fight.getLocation()) && getResult() == fight.getResult() && Objects.equals(getDescription(), fight.getDescription());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getFighter1(), getFighter2(), getFightType(), getReferee(), getDate(), getLocation(), getResult(), getDescription());
     }
 }

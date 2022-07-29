@@ -31,6 +31,11 @@ export class FightService {
     return this.http.put<any>(`${this.fightUrl}/${fightId}`, fightForm);
   }
 
+  // Update Result
+  public updateResult(resultForm: any, fightId: any): Observable<any> {
+    return this.http.put<any>(`${this.fightUrl}/result/${fightId}`, resultForm);
+  }
+
   // Delete a Fight
   public deleteFight(fightId: any): Observable<any> {
     return this.http.delete<any>(`${this.fightUrl}/${fightId}`);

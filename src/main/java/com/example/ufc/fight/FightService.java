@@ -79,53 +79,18 @@ public class FightService {
             fight.setLocation(dto.getLocation());
         }
 
-        if(dto.getResult() == null){
-            throw new IllegalStateException("Please enter the result");
-        }else{
-            fight.setResult(this.getResult(dto.getResult()));
-        }
-
         if(dto.getFightType() == null){
             throw new IllegalStateException("Please enter a fight type");
         }else{
             fight.setFightType(this.getFightType(dto.getFightType()));
         }
 
+        fight.setResult(TBA);
+
         fightRepository.save(fight);
 
     }
 
-    public FightType getFightType(String fightType){
-        if(fightType.toLowerCase().equals("three rounds")){
-            return THREE_ROUNDS;
-        }else if(fightType.toLowerCase().equals("five rounds")){
-            return FIVE_ROUNDS;
-        }else if(fightType.toLowerCase().equals("championship")){
-            return CHAMPIONSHIP;
-        }else{
-            return null;
-        }
-    }
-
-    public Result getResult(String result){
-        if(result.toLowerCase().equals("decision")){
-            return DECISION;
-        }else if(result.toLowerCase().equals("split decision")){
-            return SPLIT_DECISION;
-        }else if(result.toLowerCase().equals("ko")){
-            return KO;
-        }else if(result.toLowerCase().equals("tko")){
-            return TKO;
-        }else if(result.toLowerCase().equals("draw")){
-            return DRAW;
-        }else if(result.toLowerCase().equals("doctor stoppage")){
-            return DOCTOR_STOPPAGE;
-        }else if(result.toLowerCase().equals("tba")){
-            return TBA;
-        }else{
-            return null;
-        }
-    }
     public void deleteFight(Long fightId) {
         boolean exists = fighterRepository.existsById(fightId);
         if(!exists){
@@ -149,6 +114,7 @@ public class FightService {
         }else{
             fight.setFighter1(fighter1.get());
             fight.setFighter2(fighter2.get());
+
         }
 
         Optional<Referee> referee = refereeRepository.findRefereeByName(dto.getRefereeName());
@@ -182,16 +148,31 @@ public class FightService {
             fight.setLocation(dto.getLocation());
         }
 
-        if(dto.getResult() == null){
-            throw new IllegalStateException("Please enter the result");
-        }else{
-            fight.setResult(this.getResult(dto.getResult()));
-        }
-
         if(dto.getFightType() == null){
             throw new IllegalStateException("Please enter a fight type");
         }else{
             fight.setFightType(this.getFightType(dto.getFightType()));
+        }
+
+        fight.setResult(TBA);
+    }
+
+    @Transactional
+    public void updateResult(Long fightId, ResultDto dto){
+        Fight fight = fightRepository.findById(fightId)
+                .orElseThrow(()-> new IllegalStateException(
+                        "Fight with the id of " + fightId + " does not exist"));
+
+        Optional<Fighter> winner = fighterRepository.findFighterByName(dto.getWinner());
+        if(!winner.isPresent()){
+            throw new IllegalStateException(dto.getWinner() + " was not found");
+        }else{
+            fight.setWinner(winner.get());
+        }
+        if(dto.getResult() != null){
+            fight.setResult(this.getResult(dto.getResult()));
+        }else{
+            throw new IllegalStateException("Please enter a date");
         }
     }
 
@@ -258,4 +239,34 @@ public class FightService {
         return clean;
     }
 
+    public Result getResult(String result){
+        if(result.toLowerCase().equals("decision")){
+            return DECISION;
+        }else if(result.toLowerCase().equals("split decision")){
+            return SPLIT_DECISION;
+        }else if(result.toLowerCase().equals("ko")){
+            return KO;
+        }else if(result.toLowerCase().equals("tko")){
+            return TKO;
+        }else if(result.toLowerCase().equals("draw")){
+            return DRAW;
+        }else if(result.toLowerCase().equals("doctor stoppage")){
+            return DOCTOR_STOPPAGE;
+        }else if(result.toLowerCase().equals("tba")){
+            return TBA;
+        }else{
+            return null;
+        }
+    }
+    public FightType getFightType(String fightType){
+        if(fightType.toLowerCase().equals("three rounds")){
+            return THREE_ROUNDS;
+        }else if(fightType.toLowerCase().equals("five rounds")){
+            return FIVE_ROUNDS;
+        }else if(fightType.toLowerCase().equals("championship")){
+            return CHAMPIONSHIP;
+        }else{
+            return null;
+        }
+    }
 }

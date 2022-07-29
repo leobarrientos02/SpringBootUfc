@@ -50,6 +50,38 @@
 
   <div class="fights">
     <h2>{{fighter?.name}}'s' fight history</h2>
+    <div class="fight" *ngFor="let fight of filteredFights">
+      <div class="poster" style="border-top-right-radius:0; border-bottom-right-radius: 0;">
+        <div class="poster-title" [ngClass]="[fight?.fightType == 'CHAMPIONSHIP' ? 'championship' : 'fightNight']">
+          <h2>{{fight?.fighter1.name}}</h2>
+          <span>vs</span>
+          <h2>{{fight?.fighter2.name}}</h2>
+        </div>
+        <div class="face-off">
+          <img src="{{fight?.fighter1.imageUrl}}" alt="{{fight?.fighter1.name}}">
+          <img src="{{fight?.fighter2.imageUrl}}" alt="{{fight?.fighter2.name}}">
+        </div>
+        <div class="poster-text" [ngClass]="[fight?.fightType == 'CHAMPIONSHIP' ? 'championship' : 'fightNight']">
+          <p>{{fight?.date | date}}</p>
+          <p>{{fight?.location}}</p>
+        </div>
+      </div>
+      <div class="info" style="border-top-left-radius:0; border-bottom-left-radius: 0;">
+        <div class="fight-title">
+          <h2>{{fight?.fighter1.name}}</h2>
+          <span>vs</span>
+          <h2>{{fight?.fighter2.name}}</h2>
+        </div>
+        <p>{{fight?.date | date}}</p>
+        <p>{{fight?.location}}</p>
+        <p>{{fight?.fighter1.weightclass}} {{fes.fightTypeFormatter(fight?.fightType)}}</p>
+        <p>Referee {{fight?.referee?.name}}</p>
+        <p>Result:
+          <span *ngIf="fight?.winner != null">{{fight?.winner?.name}} won by </span>
+          {{fes.resultFormatter(fight?.result)}}
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 

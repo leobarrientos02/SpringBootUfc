@@ -10,20 +10,17 @@ public class FightDto {
     private String refereeName;
     private LocalDate date;
     private String location;
-    private String result;
-
 
     public FightDto() {
     }
 
-    public FightDto(String fighter1, String fighter2, String fightType, String refereeName, LocalDate date, String location, String result) {
+    public FightDto(String fighter1, String fighter2, String fightType, String refereeName, LocalDate date, String location) {
         this.fighter1 = fighter1;
         this.fighter2 = fighter2;
         this.fightType = fightType;
         this.refereeName = refereeName;
         this.date = date;
         this.location = location;
-        this.result = result;
     }
 
     public String getFighter1() {
@@ -66,14 +63,6 @@ public class FightDto {
         this.location = location;
     }
 
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
     public LocalDate getDate() {
         return date;
     }
@@ -81,4 +70,5 @@ public class FightDto {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
 }
