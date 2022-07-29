@@ -321,3 +321,14 @@
 .fightNightText{
   color: #8d0000;
 }
+
+.block{
+  border: none;
+  pointer-events: none;
+  background: lightgrey;
+  color: grey;
+  padding: .25rem 1rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  cursor: pointer;
+}

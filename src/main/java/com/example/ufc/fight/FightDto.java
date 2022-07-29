@@ -8,7 +8,6 @@ public class FightDto {
     private String fighter2;
     private String fightType;
     private String refereeName;
-
     private LocalDate date;
     private String location;
     private String result;

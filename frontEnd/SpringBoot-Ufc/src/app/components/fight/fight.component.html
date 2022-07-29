@@ -10,7 +10,7 @@
     </div>
     <div class="menu">
       <button *ngIf="fight?.result == 'TBA'"(click)="openForm('updateResult')" class="menu-button">Update Result</button>
-      <button (click)="openForm('update')" class="menu-button" style="margin: 0 1rem;">Edit</button>
+      <button [ngClass]="[fight?.result != 'TBA' ? 'block' : 'menu-button']" (click)="openForm('update')" style="margin: 0 1rem;">Edit</button>
       <button (click)="openForm('delete')" class="menu-button">Delete</button>
     </div>
   </div>

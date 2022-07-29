@@ -1,19 +1,10 @@
 package com.example.ufc.fighter;
 
-import com.example.ufc.fight.Fight;
-import com.example.ufc.referee.Referee;
+import com.example.ufc.sharedResources.Weightclass;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.ufc.sharedResources.FightType.CHAMPIONSHIP;
-import static com.example.ufc.sharedResources.Result.DECISION;
-import static com.example.ufc.sharedResources.Weightclass.Featherweight;
-import static com.example.ufc.sharedResources.Weightclass.Welterweight;
 
 @RestController
 @RequestMapping(path = "api/v1/fighters")
