@@ -3,6 +3,7 @@ package com.example.ufc.referee;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -94,5 +95,18 @@ public class Referee {
                 ", age=" + age +
                 ", imageUrl='" + imageUrl + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Referee)) return false;
+        Referee referee = (Referee) o;
+        return id.equals(referee.id) && name.equals(referee.name) && dob.equals(referee.dob) && age.equals(referee.age) && imageUrl.equals(referee.imageUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, dob, age, imageUrl);
     }
 }

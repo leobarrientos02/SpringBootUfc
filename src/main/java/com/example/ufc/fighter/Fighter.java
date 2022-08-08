@@ -4,6 +4,7 @@ import com.example.ufc.sharedResources.Weightclass;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -164,5 +165,18 @@ public class Fighter {
                 ", fightingOutOf='" + fightingOutOf + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Fighter)) return false;
+        Fighter fighter = (Fighter) o;
+        return id.equals(fighter.id) && name.equals(fighter.name) && age.equals(fighter.age) && dob.equals(fighter.dob) && weight.equals(fighter.weight) && height.equals(fighter.height) && reach.equals(fighter.reach) && weightclass == fighter.weightclass && debut.equals(fighter.debut) && fightingOutOf.equals(fighter.fightingOutOf) && imageUrl.equals(fighter.imageUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, dob, weight, height, reach, weightclass, debut, fightingOutOf, imageUrl);
     }
 }

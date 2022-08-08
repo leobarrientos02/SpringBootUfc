@@ -117,8 +117,7 @@ public class FighterService {
 
     public Weightclass getWeightclass(Double weight){
         if(weight >= 206 && weight <= 265){
-            return Heavyweight
-                    ;
+            return Heavyweight;
         }else if(weight >= 186 && weight <= 205){
             return Light_Heavyweight;
         }else if(weight >= 171 && weight <= 185){

@@ -7,6 +7,7 @@ import com.example.ufc.sharedResources.Result;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -160,5 +161,18 @@ public class Fight {
                 ", winner='" + winner + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Fight)) return false;
+        Fight fight = (Fight) o;
+        return id.equals(fight.id) && fighter1.equals(fight.fighter1) && fighter2.equals(fight.fighter2) && fightType == fight.fightType && referee.equals(fight.referee) && date.equals(fight.date) && location.equals(fight.location) && result == fight.result && winner.equals(fight.winner) && description.equals(fight.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fighter1, fighter2, fightType, referee, date, location, result, winner, description);
     }
 }
