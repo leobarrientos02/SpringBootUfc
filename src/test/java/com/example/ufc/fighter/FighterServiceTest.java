@@ -47,7 +47,7 @@ class FighterServiceTest {
         "145, Featherweight",
         "135, Bantamweight",
         "125, Flyweight",
-        "320, Unknown",
+        "320, Unknown"
     })
     void itShouldGetWeightclassWhenWeightProvided(Double weight, Weightclass expected) {
         // When

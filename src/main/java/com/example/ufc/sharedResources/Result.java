@@ -9,8 +9,9 @@ public enum Result {
     TKO("Technical Knockout"),
     DRAW("Draw"),
     DOCTOR_STOPPAGE("Doctor Stoppage"),
-    TBA("To Be Announced");
+    TBA("To Be Announced"),
 
+    NONE("None");
 
     Result(String s) {
     }
