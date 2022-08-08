@@ -11,8 +11,15 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
+import static com.example.ufc.sharedResources.Weightclass.Featherweight;
+import static java.util.Calendar.NOVEMBER;
+import static java.util.Calendar.SEPTEMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.then;
 
 class FighterServiceTest {
 
@@ -27,14 +34,6 @@ class FighterServiceTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         underTest = new FighterService(fighterRepository);
-    }
-
-    @Test
-    @Disabled
-    void itShouldFindFighterByName() {
-        // Given
-        // When
-        // Then
     }
 
     @ParameterizedTest
